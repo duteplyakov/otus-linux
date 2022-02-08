@@ -1,4 +1,4 @@
-Script started on Вт 08 фев 2022 09:36:26
+
 [0;32m(master)[0m~/pr/otus-linux/vm$ vagrant ssh
 ]0;vagrant@vm:~[?1034h[vagrant@vm ~]$ sudo -i
 ]0;root@vm:~[?1034h[root@vm ~]# pvcreate /dev/sdb
@@ -97,7 +97,7 @@ Generating grub configuration file ...
 Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64
 Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img
 done
-]0;root@vm:/[root@vm /]# cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g; [K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g;
+]0;root@vm:/[root@vm /]# cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g; cd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramfs-//g;
 > s/.img//g"` --force; done
 Executing: /sbin/dracut -v initramfs-3.10.0-862.2.3.el7.x86_64.img 3.10.0-862.2.3.el7.x86_64 --force
 dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
@@ -724,4 +724,4 @@ Connection to 127.0.0.1 closed.
 [0;32m(master)[0m~/pr/otus-linux/vm$ exit
 exit
 
-Script done on Вт 08  фев 2022 09:54:20
+
