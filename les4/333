@@ -1,0 +1,825 @@
+Script started on Sat Feb 12 15:56:31 2022
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                   ]7;file://MacBook-sotnik.Dlink/Users/sotnik/otus-linux/les4[0m[27m[24m[Jsotnik@MacBook-sotnik les4 % [K[?2004hvvagrant ssh[?2004l
+Last login: Sat Feb 12 12:19:12 2022 from 10.0.2.2
+]0;vagrant@zfs:~[?1034h[vagrant@zfs ~]$ wget -O archive.tar.gz --no-check-certificate 'https://docs.google.com/ucexport=download&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download'
+--2022-02-12 12:56:46--  https://docs.google.com/ucexport=download&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download
+Resolving docs.google.com (docs.google.com)... 64.233.164.194, 2a00:1450:4010:c01::c2
+Connecting to docs.google.com (docs.google.com)|64.233.164.194|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2022-02-12 12:56:47 ERROR 404: Not Found.
+
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O archive.tar.gz --no-check-certificate 'https://docs.google.com/ucexport=download&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download'
+--2022-02-12 13:00:09--  https://docs.google.com/ucexport=download&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download
+Resolving docs.google.com (docs.google.com)... 64.233.161.194, 2a00:1450:4010:c01::c2
+Connecting to docs.google.com (docs.google.com)|64.233.161.194|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2022-02-12 13:00:09 ERROR 404: Not Found.
+
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O archive.tar.gz --no-check-certificate 'https://docs.google.com/ucexport=download&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kwget -O archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download'[K&export=dowload'
+--2022-02-12 13:00:44--  https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload
+Resolving drive.google.com (drive.google.com)... 64.233.161.194, 2a00:1450:4010:c07::c2
+Connecting to drive.google.com (drive.google.com)|64.233.161.194|:443... connected.
+HTTP request sent, awaiting response... 307 Temporary Redirect
+Location: https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open&export=download&export=dowload [following]
+--2022-02-12 13:00:45--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open&export=download&export=dowload
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘archive.tar.gz’
+
+    [<=>                                                                                                                                                       ] 0           --.-K/s                  [ <=>                                                                                                                                                      ] 64,679      --.-K/s   in 0.08s   
+
+2022-02-12 13:00:45 (789 KB/s) - ‘archive.tar.gz’ saved [64679]
+
+]0;vagrant@zfs:~[vagrant@zfs ~]$ tar -xzvf archive.tar.gz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+]0;vagrant@zfs:~[vagrant@zfs ~]$ tar -xzvf archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ktar -xfzvf archive.tar.gz[C[C[C[C[1P archive.tar.gz[1P archive.tar.gz[1P archive.tar.gzf archive.tar.gz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+]0;vagrant@zfs:~[vagrant@zfs ~]$ ls
+[0m[38;5;9marchive.tar.gz[0m
+]0;vagrant@zfs:~[vagrant@zfs ~]$ lstar -xf archive.tar.gz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+]0;vagrant@zfs:~[vagrant@zfs ~]$ ашду фкр[K[K[K[K[K[K[K[Kfile archive.tar.gz
+archive.tar.gz: HTML document, UTF-8 Unicode text, with very long lines
+]0;vagrant@zfs:~[vagrant@zfs ~]$ file archive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C: POSIX tar archive (GNU)
+-bash: syntax error near unexpected token `('
+]0;vagrant@zfs:~[vagrant@zfs ~]$ archive.tar.gz: POSIX tar archive (GNU)[K[K[K[K[K[K
+-bash: archive.tar.gz:: command not found
+]0;vagrant@zfs:~[vagrant@zfs ~]$ archive.tar.gz: POSIX tar archive (GNU)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pfile archive.tar.gz[C[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gztarchive.tar.gz[Carchive.tar.gzrarchive.tar.gz archive.tar.gzvarchive.tar.gzfarchive.tar.gzxarchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gzxarchive.tar.gzvarchive.tar.gzfarchive.tar.gz archive.tar.gz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+]0;vagrant@zfs:~[vagrant@zfs ~]$ tar xvf archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Carchive.tar.gz: POSIX tar archive (GNU)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pfile archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3@tar -xf[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Ktar -xf archive.tar.gz[2@zv[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget -O archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'
+--2022-02-12 14:07:29--  https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload
+Resolving drive.google.com (drive.google.com)... 64.233.164.194, 2a00:1450:4010:c08::c2
+Connecting to drive.google.com (drive.google.com)|64.233.164.194|:443... connected.
+HTTP request sent, awaiting response... 307 Temporary Redirect
+Location: https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open&export=download&export=dowload [following]
+--2022-02-12 14:07:29--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open&export=download&export=dowload
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘archive.tar.gz’
+
+    [<=>                                                                                                                                                       ] 0           --.-K/s                  [ <=>                                                                                                                                                      ] 64,671      --.-K/s   in 0.1s    
+
+2022-02-12 14:07:30 (661 KB/s) - ‘archive.tar.gz’ saved [64671]
+
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctar xvf archive.tar.gz[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Carchive.tar.gz: POSIX tar archive[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Ptar xvf archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Carchive.tar.gz: POSIX tar archive (GNU)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pfile archive.tar.gz
+archive.tar.gz: HTML document, UTF-8 Unicode text, with very long lines
+]0;vagrant@zfs:~[vagrant@zfs ~]$ file archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget -O archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+> ^C
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile archive.tar.gz[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget -O archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@u[1@r[1@l[1@ 
+--2022-02-12 14:10:14--  http://archive.tar.gz/
+Resolving archive.tar.gz (archive.tar.gz)... failed: Name or service not known.
+wget: unable to resolve host address ‘archive.tar.gz’
+--2022-02-12 14:10:14--  https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload
+Resolving drive.google.com (drive.google.com)... 64.233.161.194, 2a00:1450:4010:c08::c2
+Connecting to drive.google.com (drive.google.com)|64.233.161.194|:443... connected.
+HTTP request sent, awaiting response... 307 Temporary Redirect
+Location: https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open&export=download&export=dowload [following]
+--2022-02-12 14:10:14--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open&export=download&export=dowload
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘url’
+
+    [<=>                                                                                                                                                       ] 0           --.-K/s                  [ <=>                                                                                                                                                      ] 64,675      --.-K/s   in 0.08s   
+
+2022-02-12 14:10:15 (783 KB/s) - ‘url’ saved [64675]
+
+FINISHED --2022-02-12 14:10:15--
+Total wall clock time: 1.2s
+Downloaded: 1 files, 63K in 0.08s (783 KB/s)
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O url archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[36Parchive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile archive.tar.gz[K
+archive.tar.gz: HTML document, UTF-8 Unicode text, with very long lines
+]0;vagrant@zfs:~[vagrant@zfs ~]$ file archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget -O url archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kurl (https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg)[K[1Phttps://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+--2022-02-12 14:10:55--  http://url/
+Resolving url (url)... failed: Name or service not known.
+wget: unable to resolve host address ‘url’
+--2022-02-12 14:10:55--  https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving drive.google.com (drive.google.com)... 64.233.161.194, 2a00:1450:4010:c01::c2
+Connecting to drive.google.com (drive.google.com)|64.233.161.194|:443... connected.
+HTTP request sent, awaiting response... 307 Temporary Redirect
+Location: https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open [following]
+--2022-02-12 14:10:56--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’
+
+    [<=>                                                                                                                                                       ] 0           --.-K/s                  [ <=>                                                                                                                                                      ] 64,386      --.-K/s   in 0.1s    
+
+2022-02-12 14:10:56 (661 KB/s) - ‘open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’ saved [64386]
+
+FINISHED --2022-02-12 14:10:56--
+Total wall clock time: 1.0s
+Downloaded: 1 files, 63K in 0.1s (661 KB/s)
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget url https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile archive.tar.gz[K
+archive.tar.gz: HTML document, UTF-8 Unicode text, with very long lines
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wge t[K[Kt url https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+--2022-02-12 14:11:54--  http://url/
+Resolving url (url)... failed: Name or service not known.
+wget: unable to resolve host address ‘url’
+--2022-02-12 14:11:54--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving drive.google.com (drive.google.com)... 64.233.161.194, 2a00:1450:4010:c08::c2
+Connecting to drive.google.com (drive.google.com)|64.233.161.194|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/ [following]
+--2022-02-12 14:11:54--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/edit [following]
+--2022-02-12 14:11:54--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/edit
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’
+
+    [<=>                                                                                                                                                       ] 0           --.-K/s                  [ <=>                                                                                                                                                      ] 64,255      --.-K/s   in 0.1s    
+
+2022-02-12 14:11:55 (653 KB/s) - ‘1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’ saved [64255]
+
+FINISHED --2022-02-12 14:11:55--
+Total wall clock time: 1.4s
+Downloaded: 1 files, 63K in 0.1s (653 KB/s)
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.2.tar.xz
+--2022-02-12 14:13:06--  https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.2.tar.xz
+Resolving cdn.kernel.org (cdn.kernel.org)... 151.101.13.176, 2a04:4e42:3::432
+Connecting to cdn.kernel.org (cdn.kernel.org)|151.101.13.176|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 121899896 (116M) [application/x-xz]
+Saving to: ‘linux-5.15.2.tar.xz’
+
+ 0% [                                                                                                                                                          ] 0           --.-K/s               0% [                                                                                                                                                          ] 155,920      761KB/s              0% [                                                                                                                                                          ] 401,680      968KB/s              0% [                                                                                                                                                          ] 720,640     1.12MB/s              0% [>                                                                                                                                                         ] 1,097,472   1.26MB/s              1% [>                                                                                                                                                         ] 1,507,072   1.40MB/s              1% [=>                                                                                                                                                        ] 1,998,592   1.55MB/s              1% [==>                                                                                                                                                       ] 2,408,192   1.59MB/s              2% [==>                                                                                                                                                       ] 2,948,864   1.71MB/s              2% [===>                                                                                                                                                      ] 3,374,848   1.74MB/s              3% [====>                                                                                                                                                     ] 4,079,360   1.90MB/s              3% [=====>                                                                                                                                                    ] 4,849,408   2.05MB/s              4% [======>                                                                                                                                                   ] 5,783,296   2.23MB/s              5% [=======>                                                                                                                                                  ] 6,831,872   2.44MB/s              6% [=========>                                                                                                                                                ] 7,945,984   2.64MB/s              7% [==========>                                                                                                                                               ] 9,207,552   2.86MB/s  eta 38s     8% [============>                                                                                                                                             ] 10,469,120  3.17MB/s  eta 38s     9% [=============>                                                                                                                                            ] 11,845,376  3.47MB/s  eta 38s    10% [===============>                                                                                                                                          ] 13,238,016  3.77MB/s  eta 38s    11% [=================>                                                                                                                                        ] 14,597,888  4.04MB/s  eta 38s    13% [===================>                                                                                                                                      ] 16,039,680  4.44MB/s  eta 27s    14% [=====================>                                                                                                                                    ] 17,891,072  4.83MB/s  eta 27s    16% [========================>                                                                                                                                 ] 19,939,072  5.25MB/s  eta 27s    17% [==========================>                                                                                                                               ] 21,462,784  5.71MB/s  eta 27s    19% [============================>                                                                                                                             ] 23,625,472  6.17MB/s  eta 27s    20% [==============================>                                                                                                                           ] 24,985,344  6.37MB/s  eta 20s    22% [=================================>                                                                                                                        ] 26,984,192  6.71MB/s  eta 20s    23% [===================================>                                                                                                                      ] 29,032,192  7.19MB/s  eta 20s    25% [=====================================>                                                                                                                    ] 30,588,672  7.34MB/s  eta 20s    26% [=======================================>                                                                                                                  ] 32,194,304  7.45MB/s  eta 20s    28% [==========================================>                                                                                                               ] 34,275,072  7.75MB/s  eta 16s    29% [=============================================>                                                                                                            ] 36,454,144  7.90MB/s  eta 16s    31% [================================================>                                                                                                         ] 38,952,704  8.27MB/s  eta 16s    33% [==================================================>                                                                                                       ] 40,943,360  8.59MB/s  eta 16s    34% [====================================================>                                                                                                     ] 42,139,392  8.50MB/s  eta 16s    36% [=======================================================>                                                                                                  ] 44,711,680  8.74MB/s  eta 12s    37% [=========================================================>                                                                                                ] 46,186,240  8.77MB/s  eta 12s    39% [===========================================================>                                                                                              ] 47,841,024  8.77MB/s  eta 12s    40% [=============================================================>                                                                                            ] 49,708,800  8.64MB/s  eta 12s    42% [===============================================================>                                                                                          ] 51,429,120  8.72MB/s  eta 12s    43% [==================================================================>                                                                                       ] 53,493,504  8.67MB/s  eta 10s    45% [=====================================================================>                                                                                    ] 55,852,800  8.90MB/s  eta 10s    47% [========================================================================>                                                                                 ] 58,195,712  9.05MB/s  eta 10s    49% [===========================================================================>                                                                              ] 60,522,240  9.14MB/s  eta 10s    51% [==============================================================================>                                                                           ] 62,570,240  9.35MB/s  eta 10s    53% [=================================================================================>                                                                        ] 64,962,304  9.53MB/s  eta 8s     54% [==================================================================================>                                                                       ] 66,256,640  9.27MB/s  eta 8s     57% [======================================================================================>                                                                   ] 69,598,976  9.59MB/s  eta 8s     59% [=========================================================================================>                                                                ] 71,974,656  9.69MB/s  eta 8s     60% [============================================================================================>                                                             ] 73,678,592  9.48MB/s  eta 8s     62% [===============================================================================================>                                                          ] 76,021,504  9.87MB/s  eta 6s     63% [=================================================================================================>                                                        ] 77,643,520  9.61MB/s  eta 6s     65% [===================================================================================================>                                                      ] 79,724,288  9.81MB/s  eta 6s     66% [=====================================================================================================>                                                    ] 81,428,224  9.77MB/s  eta 6s     68% [========================================================================================================>                                                 ] 83,197,696  9.74MB/s  eta 6s     69% [==========================================================================================================>                                               ] 85,065,472  9.79MB/s  eta 5s     71% [============================================================================================================>                                             ] 86,998,784  9.69MB/s  eta 5s     72% [===============================================================================================================>                                          ] 88,768,256  9.55MB/s  eta 5s     74% [=================================================================================================================>                                        ] 90,586,880  9.42MB/s  eta 5s     75% [====================================================================================================================>                                     ] 92,618,496  9.31MB/s  eta 5s     77% [======================================================================================================================>                                   ] 94,748,416  9.29MB/s  eta 4s     79% [========================================================================================================================>                                 ] 96,419,584  9.11MB/s  eta 4s     80% [==========================================================================================================================>                               ] 97,828,608  8.89MB/s  eta 4s     81% [=============================================================================================================================>                            ] 99,761,920  8.83MB/s  eta 4s     83% [===============================================================================================================================>                          ] 101,564,160 8.68MB/s  eta 4s     85% [=================================================================================================================================>                        ] 103,628,544 8.70MB/s  eta 2s     86% [====================================================================================================================================>                     ] 105,922,304 8.93MB/s  eta 2s     88% [=======================================================================================================================================>                  ] 107,659,008 8.78MB/s  eta 2s     90% [=========================================================================================================================================>                ] 109,879,040 8.91MB/s  eta 2s     91% [===========================================================================================================================================>              ] 111,558,400 8.77MB/s  eta 2s     93% [==============================================================================================================================================>           ] 113,508,096 8.92MB/s  eta 1s     94% [================================================================================================================================================>         ] 115,162,880 8.86MB/s  eta 1s     96% [==================================================================================================================================================>       ] 117,112,576 8.90MB/s  eta 1s     97% [=====================================================================================================================================================>    ] 118,996,736 8.94MB/s  eta 1s     99% [========================================================================================================================================================> ] 121,241,344 9.03MB/s  eta 1s     100%[=========================================================================================================================================================>] 121,899,896 9.06MB/s   in 15s    
+
+2022-02-12 14:13:32 (7.67 MB/s) - ‘linux-5.15.2.tar.xz’ saved [121899896/121899896]
+
+]0;vagrant@zfs:~[vagrant@zfs ~]$ tar -xvf linux-5.15.2.tar.xz[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kwget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.2.tar.xz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Curl https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile archive.tar.gz[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget url https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile archive.tar.gz[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget -O url archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[36Parchive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile archive.tar.gz[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget -O archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfile archive.tar.gz[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget -O archive.tar.gz --no-check-certificate 'https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download&export=dowload'[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ctar xvf archive.tar.gz[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Carchive.tar.gz: POSIX tar archive[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Ptar xvf archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Carchive.tar.gz: POSIX tar archive (GNU)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pfile archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3@tar -xf[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[K
+1KRBNW33QWqbvbVHa3hLJivOAt60yukkg  [0m[38;5;9marchive.tar.gz[0m  [38;5;9mlinux-5.15.2.tar.xz[0m  open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg  url
+]0;vagrant@zfs:~[vagrant@zfs ~]$ tar -xzvf linux-5.15.2.tar.xz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+]0;vagrant@zfs:~[vagrant@zfs ~]$ rm linux-5.15.2.tar.xz
+]0;vagrant@zfs:~[vagrant@zfs ~]$ rm open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg  ur
+rm: cannot remove ‘ur’: No such file or directory
+]0;vagrant@zfs:~[vagrant@zfs ~]$ ls
+1KRBNW33QWqbvbVHa3hLJivOAt60yukkg  [0m[38;5;9marchive.tar.gz[0m  url
+]0;vagrant@zfs:~[vagrant@zfs ~]$ ls -l
+total 192
+-rw-rw-r--. 1 vagrant vagrant 64255 Feb 12 14:11 1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+-rw-rw-r--. 1 vagrant vagrant 64671 Feb 12 14:07 [0m[38;5;9marchive.tar.gz[0m
+-rw-rw-r--. 1 vagrant vagrant 64675 Feb 12 14:10 url
+]0;vagrant@zfs:~[vagrant@zfs ~]$ rm 1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+]0;vagrant@zfs:~[vagrant@zfs ~]$ rm url
+]0;vagrant@zfs:~[vagrant@zfs ~]$ ls
+[0m[38;5;9marchive.tar.gz[0m
+]0;vagrant@zfs:~[vagrant@zfs ~]$ rm archive.tar.gz
+]0;vagrant@zfs:~[vagrant@zfs ~]$ ls
+]0;vagrant@zfs:~[vagrant@zfs ~]$ lb[K[Kwget url https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+--2022-02-12 14:18:59--  http://url/
+Resolving url (url)... failed: Name or service not known.
+wget: unable to resolve host address ‘url’
+--2022-02-12 14:18:59--  https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving drive.google.com (drive.google.com)... 64.233.161.194, 2a00:1450:4010:c01::c2
+Connecting to drive.google.com (drive.google.com)|64.233.161.194|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://doc-0c-bo-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/ppnn9nn35c49790t2o5k4k1ksgta5uvj/1644675525000/16189157874053420687/*/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg [following]
+Warning: wildcards not supported in HTTP.
+--2022-02-12 14:19:04--  https://doc-0c-bo-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/ppnn9nn35c49790t2o5k4k1ksgta5uvj/1644675525000/16189157874053420687/*/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving doc-0c-bo-docs.googleusercontent.com (doc-0c-bo-docs.googleusercontent.com)... 216.58.210.161, 2a00:1450:4026:804::2001
+Connecting to doc-0c-bo-docs.googleusercontent.com (doc-0c-bo-docs.googleusercontent.com)|216.58.210.161|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 7275140 (6.9M) [application/x-gzip]
+Saving to: ‘uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’
+
+ 0% [                                                                                                                                                          ] 0           --.-K/s               3% [====>                                                                                                                                                     ] 265,222     1.24MB/s             20% [==============================>                                                                                                                           ] 1,478,885   3.48MB/s             42% [===============================================================>                                                                                          ] 3,068,133   4.83MB/s             55% [=====================================================================================>                                                                    ] 4,067,557   4.65MB/s             100%[=========================================================================================================================================================>] 7,275,140   6.77MB/s   in 1.0s   
+
+2022-02-12 14:19:06 (6.77 MB/s) - ‘uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’ saved [7275140/7275140]
+
+FINISHED --2022-02-12 14:19:06--
+Total wall clock time: 6.6s
+Downloaded: 1 files, 6.9M in 1.0s (6.77 MB/s)
+]0;vagrant@zfs:~[vagrant@zfs ~]$ cd
+]0;vagrant@zfs:~[vagrant@zfs ~]$ cdwget url https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Krm archive.tar.gzls[Krm url1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls -l[K
+total 7108
+-rw-rw-r--. 1 vagrant vagrant 7275140 Feb 12 14:19 uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O archive.tar.gz
+wget: missing URL
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help' for more options.
+]0;vagrant@zfs:~[vagrant@zfs ~]$ https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkgwhttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cghttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cehttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cthttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[COhttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cahttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crhttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cchttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Chttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cihttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvhttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cehttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C.https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cthttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cahttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crhttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C.https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cghttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Czhttps://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+--2022-02-12 14:20:54--  https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving drive.google.com (drive.google.com)... 64.233.161.194, 2a00:1450:4010:c08::c2
+Connecting to drive.google.com (drive.google.com)|64.233.161.194|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://drive.google.com/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg [following]
+--2022-02-12 14:20:54--  https://drive.google.com/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 303 See Other
+Location: https://doc-0c-bo-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/0ok0gn5fd8651iiidnjr7v8bp2rn17lm/1644675600000/16189157874053420687/*/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg [following]
+Warning: wildcards not supported in HTTP.
+--2022-02-12 14:21:00--  https://doc-0c-bo-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/0ok0gn5fd8651iiidnjr7v8bp2rn17lm/1644675600000/16189157874053420687/*/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving doc-0c-bo-docs.googleusercontent.com (doc-0c-bo-docs.googleusercontent.com)... 216.58.210.161, 2a00:1450:4026:804::2001
+Connecting to doc-0c-bo-docs.googleusercontent.com (doc-0c-bo-docs.googleusercontent.com)|216.58.210.161|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 7275140 (6.9M) [application/x-gzip]
+Saving to: ‘archive.tar.gz’
+
+ 0% [                                                                                                                                                          ] 0           --.-K/s               3% [====>                                                                                                                                                     ] 241,072     1.15MB/s             14% [=====================>                                                                                                                                    ] 1,085,669   2.55MB/s             38% [=========================================================>                                                                                                ] 2,773,221   4.33MB/s             60% [============================================================================================>                                                             ] 4,411,621   4.73MB/s             100%[=========================================================================================================================================================>] 7,275,140   6.55MB/s   in 1.1s   
+
+2022-02-12 14:21:02 (6.55 MB/s) - ‘archive.tar.gz’ saved [7275140/7275140]
+
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O archive.tar.gz https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+wget: missing URL
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help' for more options.
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O archive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gz[1Parchive.tar.gzrarchive.tar.gzmarchive.tar.gz archive.tar.gz
+]0;vagrant@zfs:~[vagrant@zfs ~]$ rm archive.tar.gz[5@wget -O[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C https://disk.yandex.ru/d/gfKpJSowg8WP_w
+--2022-02-12 14:22:29--  https://disk.yandex.ru/d/gfKpJSowg8WP_w
+Resolving disk.yandex.ru (disk.yandex.ru)... 87.250.250.50, 2a02:6b8::2:50
+Connecting to disk.yandex.ru (disk.yandex.ru)|87.250.250.50|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 25661 (25K) [text/html]
+Saving to: ‘archive.tar.gz’
+
+ 0% [                                                                                                                                                          ] 0           --.-K/s              100%[=========================================================================================================================================================>] 25,661      --.-K/s   in 0.03s   
+
+2022-02-12 14:22:30 (894 KB/s) - ‘archive.tar.gz’ saved [25661/25661]
+
+]0;vagrant@zfs:~[vagrant@zfs ~]$ wget -O archive.tar.gz https://disk.yandex.ru/d/gfKpJSowg8WP_w[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crm archive.tar.gz[K[5@wget -O[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C https://drive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls -l[K
+total 7136
+-rw-rw-r--. 1 vagrant vagrant   25661 Feb 12 14:22 [0m[38;5;9marchive.tar.gz[0m
+-rw-rw-r--. 1 vagrant vagrant 7275140 Feb 12 14:19 uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+]0;vagrant@zfs:~[vagrant@zfs ~]$ rm uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+]0;vagrant@zfs:~[vagrant@zfs ~]$ 
+]0;vagrant@zfs:~[vagrant@zfs ~]$ ls
+[0m[38;5;9marchive.tar.gz[0m
+]0;vagrant@zfs:~[vagrant@zfs ~]$ tar -xzvf archive.tar.gz
+
+gzip: stdin: not in gzip format
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+]0;vagrant@zfs:~[vagrant@zfs ~]$ yum install cm[K[Kmc
+Loaded plugins: fastestmirror
+You need to be root to perform this command.
+]0;vagrant@zfs:~[vagrant@zfs ~]$ mc
+-bash: mc: command not found
+]0;vagrant@zfs:~[vagrant@zfs ~]$ mcyum install mctar -xzvf archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Pyum install mcmc[K[K[Ksudo -l[Ki
+]0;root@zfs:~[?1034h[root@zfs ~]# wget -O archive.tar.gz --no-check-certificate  'https://docs.google.com/uc?export=download&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg' --output zfs_task1.tar[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8P‘https://docs.google.com/uc?export=download&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&export=download’[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[10Prive.google.com/u/0/uc?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg&e xport=download’[C[C[C[C[C[C[C[C[C[C[C[C[C[C[54P.tar/uc?export=download&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg' --output zfs_task[C[C[C[C[C[C[C[C[C[C[C[C[C[Cwget -O archive.tar.gz --no-check-certificate 'httJivOAt60yukkg' --output zfs_task1.tar[C[C[C[C[C[C[C[C[C[C[C[C[C[C[38P    NAME            PROPERTY     VALUE     SOURCE[C[C[C[C[C[C[C[C[C[C[C[C[C[Cz[K    fork_otus_pool  special_small_blocks  0                      default[K[K[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[Kls
+anaconda-ks.cfg  [0m[38;5;9marchive.tar.gz[0m  original-ks.cfg  [38;5;9mzfs_task1.tar[0m  [38;5;27mzpoolexport[0m
+]0;root@zfs:~[root@zfs ~]# tar -xzvf archive.tar.gz
+
+gzip: stdin: unexpected end of file
+tar: Child returned status 1
+tar: Error is not recoverable: exiting now
+]0;root@zfs:~[root@zfs ~]# tar -xzvf archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Ktar -xzvf archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kyum install mc
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: centos-mirror.rbc.ru
+ * extras: centos-mirror.rbc.ru
+ * updates: centos-mirror.rbc.ru
+Resolving Dependencies
+--> Running transaction check
+---> Package mc.x86_64 1:4.8.7-11.el7 will be installed
+--> Processing Dependency: perl(strict) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: perl(bytes) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: perl(POSIX) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: perl(File::Temp) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: perl(File::Basename) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: /usr/bin/perl for package: 1:mc-4.8.7-11.el7.x86_64
+--> Processing Dependency: libgpm.so.2()(64bit) for package: 1:mc-4.8.7-11.el7.x86_64
+--> Running transaction check
+---> Package gpm-libs.x86_64 0:1.20.7-6.el7 will be installed
+---> Package perl.x86_64 4:5.16.3-299.el7_9 will be installed
+--> Processing Dependency: perl-libs = 4:5.16.3-299.el7_9 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-macros for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl-libs for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads::shared) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(threads) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(constant) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::Local) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Storable) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Socket) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Getopt::Long) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec::Unix) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec::Functions) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Spec) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(File::Path) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Exporter) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Cwd) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: perl(Carp) for package: 4:perl-5.16.3-299.el7_9.x86_64
+--> Processing Dependency: libperl.so()(64bit) for package: 4:perl-5.16.3-299.el7_9.x86_64
+---> Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+--> Running transaction check
+---> Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+---> Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+---> Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+---> Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+---> Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.40-3.el7.noarch
+--> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.40-3.el7.noarch
+---> Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+---> Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+--> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+---> Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+---> Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+---> Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+---> Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+---> Package perl-constant.noarch 0:1.27-2.el7 will be installed
+---> Package perl-libs.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-macros.x86_64 4:5.16.3-299.el7_9 will be installed
+---> Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+---> Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+--> Running transaction check
+---> Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+---> Package perl-Pod-Escapes.noarch 1:1.04-299.el7_9 will be installed
+---> Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-3.el7.noarch
+--> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-3.el7.noarch
+---> Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+--> Running transaction check
+---> Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+--> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+--> Running transaction check
+---> Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+---> Package perl-parent.noarch 1:0.225-244.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+===================================================================================================================================================================================================
+ Package                                                Arch                                   Version                                               Repository                               Size
+===================================================================================================================================================================================================
+Installing:
+ mc                                                     x86_64                                 1:4.8.7-11.el7                                        base                                    1.7 M
+Installing for dependencies:
+ gpm-libs                                               x86_64                                 1.20.7-6.el7                                          base                                     32 k
+ perl                                                   x86_64                                 4:5.16.3-299.el7_9                                    updates                                 8.0 M
+ perl-Carp                                              noarch                                 1.26-244.el7                                          base                                     19 k
+ perl-Encode                                            x86_64                                 2.51-7.el7                                            base                                    1.5 M
+ perl-Exporter                                          noarch                                 5.68-3.el7                                            base                                     28 k
+ perl-File-Path                                         noarch                                 2.09-2.el7                                            base                                     26 k
+ perl-File-Temp                                         noarch                                 0.23.01-3.el7                                         base                                     56 k
+ perl-Filter                                            x86_64                                 1.49-3.el7                                            base                                     76 k
+ perl-Getopt-Long                                       noarch                                 2.40-3.el7                                            base                                     56 k
+ perl-HTTP-Tiny                                         noarch                                 0.033-3.el7                                           base                                     38 k
+ perl-PathTools                                         x86_64                                 3.40-5.el7                                            base                                     82 k
+ perl-Pod-Escapes                                       noarch                                 1:1.04-299.el7_9                                      updates                                  52 k
+ perl-Pod-Perldoc                                       noarch                                 3.20-4.el7                                            base                                     87 k
+ perl-Pod-Simple                                        noarch                                 1:3.28-4.el7                                          base                                    216 k
+ perl-Pod-Usage                                         noarch                                 1.63-3.el7                                            base                                     27 k
+ perl-Scalar-List-Utils                                 x86_64                                 1.27-248.el7                                          base                                     36 k
+ perl-Socket                                            x86_64                                 2.010-5.el7                                           base                                     49 k
+ perl-Storable                                          x86_64                                 2.45-3.el7                                            base                                     77 k
+ perl-Text-ParseWords                                   noarch                                 3.29-4.el7                                            base                                     14 k
+ perl-Time-HiRes                                        x86_64                                 4:1.9725-3.el7                                        base                                     45 k
+ perl-Time-Local                                        noarch                                 1.2300-2.el7                                          base                                     24 k
+ perl-constant                                          noarch                                 1.27-2.el7                                            base                                     19 k
+ perl-libs                                              x86_64                                 4:5.16.3-299.el7_9                                    updates                                 690 k
+ perl-macros                                            x86_64                                 4:5.16.3-299.el7_9                                    updates                                  44 k
+ perl-parent                                            noarch                                 1:0.225-244.el7                                       base                                     12 k
+ perl-podlators                                         noarch                                 2.5.1-3.el7                                           base                                    112 k
+ perl-threads                                           x86_64                                 1.87-4.el7                                            base                                     49 k
+ perl-threads-shared                                    x86_64                                 1.43-6.el7                                            base                                     39 k
+
+Transaction Summary
+===================================================================================================================================================================================================
+Install  1 Package (+28 Dependent packages)
+
+Total download size: 13 M
+Installed size: 42 M
+Is this ok [y/d/N]: 
+Exiting on user command
+Your transaction was saved, rerun it with:
+ yum load-transaction /tmp/yum_save_tx.2022-02-12.14-26.zxHKHI.yumtx
+]0;root@zfs:~[root@zfs ~]# mc
+-bash: mc: command not found
+]0;root@zfs:~[root@zfs ~]# ls
+anaconda-ks.cfg  [0m[38;5;9marchive.tar.gz[0m  original-ks.cfg  [38;5;9mzfs_task1.tar[0m  [38;5;27mzpoolexport[0m
+]0;root@zfs:~[root@zfs ~]# ls zpoolexport
+filea  fileb
+]0;root@zfs:~[root@zfs ~]# rm  zfs_task1.tar
+rm: remove regular file ‘zfs_task1.tar’? 
+]0;root@zfs:~[root@zfs ~]# archive.tar.gz[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[Kls
+anaconda-ks.cfg  [0m[38;5;9marchive.tar.gz[0m  original-ks.cfg  [38;5;9mzfs_task1.tar[0m  [38;5;27mzpoolexport[0m
+]0;root@zfs:~[root@zfs ~]# zpool import -d zpoolexport/
+   pool: otus
+     id: 6554193320433390805
+  state: ONLINE
+ action: The pool can be imported using its name or numeric identifier.
+ config:
+
+	otus                         ONLINE
+	  mirror-0                   ONLINE
+	    /root/zpoolexport/filea  ONLINE
+	    /root/zpoolexport/fileb  ONLINE
+]0;root@zfs:~[root@zfs ~]# zpool import -d zpoolexport/ otus
+cannot mount '/otus': directory is not empty
+]0;root@zfs:~[root@zfs ~]# lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   40G  0 disk 
+└─sda1   8:1    0   40G  0 part /
+sdb      8:16   0  512M  0 disk 
+├─sdb1   8:17   0  502M  0 part 
+└─sdb9   8:25   0    8M  0 part 
+sdc      8:32   0  512M  0 disk 
+├─sdc1   8:33   0  502M  0 part 
+└─sdc9   8:41   0    8M  0 part 
+sdd      8:48   0  512M  0 disk 
+├─sdd1   8:49   0  502M  0 part 
+└─sdd9   8:57   0    8M  0 part 
+sde      8:64   0  512M  0 disk 
+├─sde1   8:65   0  502M  0 part 
+└─sde9   8:73   0    8M  0 part 
+sdf      8:80   0  512M  0 disk 
+├─sdf1   8:81   0  502M  0 part 
+└─sdf9   8:89   0    8M  0 part 
+sdg      8:96   0  512M  0 disk 
+├─sdg1   8:97   0  502M  0 part 
+└─sdg9   8:105  0    8M  0 part 
+sdh      8:112  0  512M  0 disk 
+├─sdh1   8:113  0  502M  0 part 
+└─sdh9   8:121  0    8M  0 part 
+sdi      8:128  0  512M  0 disk 
+├─sdi1   8:129  0  502M  0 part 
+└─sdi9   8:137  0    8M  0 part 
+]0;root@zfs:~[root@zfs ~]# zfs list
+NAME             USED  AVAIL     REFER  MOUNTPOINT
+otus            2.04M   350M       24K  /otus
+otus/hometask2  1.88M   350M     1.88M  /otus/hometask2
+otus1           1.26M   351M     1.19M  /otus1
+otus2           1.25M   351M     1.18M  /otus2
+otus3           1.26M   351M     1.18M  /otus3
+otus4           1.25M   351M     1.18M  /otus4
+]0;root@zfs:~[root@zfs ~]# zpool status
+  pool: otus
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME                         STATE     READ WRITE CKSUM
+	otus                         ONLINE       0     0     0
+	  mirror-0                   ONLINE       0     0     0
+	    /root/zpoolexport/filea  ONLINE       0     0     0
+	    /root/zpoolexport/fileb  ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus1
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus1       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdb     ONLINE       0     0     0
+	    sdc     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus2
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus2       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdd     ONLINE       0     0     0
+	    sde     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus3
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus3       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdf     ONLINE       0     0     0
+	    sdg     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus4
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus4       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdh     ONLINE       0     0     0
+	    sdi     ONLINE       0     0     0
+
+errors: No known data errors
+]0;root@zfs:~[root@zfs ~]# zpool import -d zpoolexport/ otus
+cannot import 'otus': a pool with that name already exists
+use the form 'zpool import <pool | id> <newpool>' to give it a new name
+]0;root@zfs:~[root@zfs ~]# zpool import -d zpoolexport/ otus[K[K[K[K
+no pools available to import
+]0;root@zfs:~[root@zfs ~]# zpool import -d zpoolexport/ otus newotus
+cannot import 'otus': no such pool available
+]0;root@zfs:~[root@zfs ~]# zpool get all otus
+NAME  PROPERTY                       VALUE                          SOURCE
+otus  size                           480M                           -
+otus  capacity                       0%                             -
+otus  altroot                        -                              default
+otus  health                         ONLINE                         -
+otus  guid                           6554193320433390805            -
+otus  version                        -                              default
+otus  bootfs                         -                              default
+otus  delegation                     on                             default
+otus  autoreplace                    off                            default
+otus  cachefile                      -                              default
+otus  failmode                       wait                           default
+otus  listsnapshots                  off                            default
+otus  autoexpand                     off                            default
+otus  dedupditto                     0                              default
+otus  dedupratio                     1.00x                          -
+otus  free                           478M                           -
+otus  allocated                      2.12M                          -
+otus  readonly                       off                            -
+otus  ashift                         0                              default
+otus  comment                        -                              default
+otus  expandsize                     -                              -
+otus  freeing                        0                              -
+otus  fragmentation                  0%                             -
+otus  leaked                         0                              -
+otus  multihost                      off                            default
+otus  checkpoint                     -                              -
+otus  load_guid                      4477135957578145132            -
+otus  autotrim                       off                            default
+otus  feature@async_destroy          enabled                        local
+otus  feature@empty_bpobj            active                         local
+otus  feature@lz4_compress           active                         local
+otus  feature@multi_vdev_crash_dump  enabled                        local
+otus  feature@spacemap_histogram     active                         local
+otus  feature@enabled_txg            active                         local
+otus  feature@hole_birth             active                         local
+otus  feature@extensible_dataset     active                         local
+otus  feature@embedded_data          active                         local
+otus  feature@bookmarks              enabled                        local
+otus  feature@filesystem_limits      enabled                        local
+otus  feature@large_blocks           enabled                        local
+otus  feature@large_dnode            enabled                        local
+otus  feature@sha512                 enabled                        local
+otus  feature@skein                  enabled                        local
+otus  feature@edonr                  enabled                        local
+otus  feature@userobj_accounting     active                         local
+otus  feature@encryption             enabled                        local
+otus  feature@project_quota          active                         local
+otus  feature@device_removal         enabled                        local
+otus  feature@obsolete_counts        enabled                        local
+otus  feature@zpool_checkpoint       enabled                        local
+otus  feature@spacemap_v2            active                         local
+otus  feature@allocation_classes     enabled                        local
+otus  feature@resilver_defer         enabled                        local
+otus  feature@bookmark_v2            enabled                        local
+]0;root@zfs:~[root@zfs ~]# zfs get all otus
+NAME  PROPERTY              VALUE                  SOURCE
+otus  type                  filesystem             -
+otus  creation              Fri May 15  4:00 2020  -
+otus  used                  2.04M                  -
+otus  available             350M                   -
+otus  referenced            24K                    -
+otus  compressratio         1.00x                  -
+otus  mounted               no                     -
+otus  quota                 none                   default
+otus  reservation           none                   default
+otus  recordsize            128K                   local
+otus  mountpoint            /otus                  default
+otus  sharenfs              off                    default
+otus  checksum              sha256                 local
+otus  compression           zle                    local
+otus  atime                 on                     default
+otus  devices               on                     default
+otus  exec                  on                     default
+otus  setuid                on                     default
+otus  readonly              off                    default
+otus  zoned                 off                    default
+otus  snapdir               hidden                 default
+otus  aclinherit            restricted             default
+otus  createtxg             1                      -
+otus  canmount              on                     default
+otus  xattr                 on                     default
+otus  copies                1                      default
+otus  version               5                      -
+otus  utf8only              off                    -
+otus  normalization         none                   -
+otus  casesensitivity       sensitive              -
+otus  vscan                 off                    default
+otus  nbmand                off                    default
+otus  sharesmb              off                    default
+otus  refquota              none                   default
+otus  refreservation        none                   default
+otus  guid                  14592242904030363272   -
+otus  primarycache          all                    default
+otus  secondarycache        all                    default
+otus  usedbysnapshots       0B                     -
+otus  usedbydataset         24K                    -
+otus  usedbychildren        2.01M                  -
+otus  usedbyrefreservation  0B                     -
+otus  logbias               latency                default
+otus  objsetid              54                     -
+otus  dedup                 off                    default
+otus  mlslabel              none                   default
+otus  sync                  standard               default
+otus  dnodesize             legacy                 default
+otus  refcompressratio      1.00x                  -
+otus  written               24K                    -
+otus  logicalused           1020K                  -
+otus  logicalreferenced     12K                    -
+otus  volmode               default                default
+otus  filesystem_limit      none                   default
+otus  snapshot_limit        none                   default
+otus  filesystem_count      none                   default
+otus  snapshot_count        none                   default
+otus  snapdev               hidden                 default
+otus  acltype               off                    default
+otus  context               none                   default
+otus  fscontext             none                   default
+otus  defcontext            none                   default
+otus  rootcontext           none                   default
+otus  relatime              off                    default
+otus  redundant_metadata    all                    default
+otus  overlay               off                    default
+otus  encryption            off                    default
+otus  keylocation           none                   default
+otus  keyformat             none                   default
+otus  pbkdf2iters           0                      default
+otus  special_small_blocks  0                      default
+]0;root@zfs:~[root@zfs ~]# zfs get available otus
+NAME  PROPERTY   VALUE  SOURCE
+otus  available  350M   -
+]0;root@zfs:~[root@zfs ~]# zfs get readonly otus
+NAME  PROPERTY  VALUE   SOURCE
+otus  readonly  off     default
+]0;root@zfs:~[root@zfs ~]# zfs get recordsize otus
+NAME  PROPERTY    VALUE    SOURCE
+otus  recordsize  128K     local
+]0;root@zfs:~[root@zfs ~]# zfs get compression otus
+NAME  PROPERTY     VALUE     SOURCE
+otus  compression  zle       local
+]0;root@zfs:~[root@zfs ~]# zfs get checksum otus
+NAME  PROPERTY  VALUE      SOURCE
+otus  checksum  sha256     local
+]0;root@zfs:~[root@zfs ~]# ls
+anaconda-ks.cfg  [0m[38;5;9marchive.tar.gz[0m  original-ks.cfg  [38;5;9mzfs_task1.tar[0m  [38;5;27mzpoolexport[0m
+]0;root@zfs:~[root@zfs ~]# wget -O otus_task2.file --no-check-certificate
+wget: missing URL
+Usage: wget [OPTION]... [URL]...
+
+Try `wget --help' for more options.
+]0;root@zfs:~[root@zfs ~]# ‘https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG&e
+[1] 971
+-bash: ‘https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG: No such file or directory
+-bash: e: command not found
+[1]+  Exit 127                ‘https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG
+]0;root@zfs:~[root@zfs ~]# xport=download’
+]0;root@zfs:~[root@zfs ~]# wget -O otus_task2.file --no-check-certificate ‘https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG&e xport=download’
+[1] 973
+-bash: e: command not found
+]0;root@zfs:~[root@zfs ~]# ‘https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG: Scheme missing.
+wget -O otus_task2.file --no-check-certificate ‘https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG&e xport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[1Pxport=download’[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kxport=download’‘https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG&e[C[C[C[C[C[C[C[C[C[C[C[C[C[C[25Pwget -O otus_task2.file --no-check-certificate[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[K
+anaconda-ks.cfg  [0m[38;5;9marchive.tar.gz[0m  original-ks.cfg  otus_task2.file  [38;5;9mzfs_task1.tar[0m  [38;5;27mzpoolexport[0m
+[1]+  Exit 1                  wget -O otus_task2.file --no-check-certificate ‘https://drive.google.com/u/0/uc?id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG
+]0;root@zfs:~[root@zfs ~]# 
+]0;root@zfs:~[root@zfs ~]# 
+]0;root@zfs:~[root@zfs ~]# 
+]0;root@zfs:~[root@zfs ~]# 
+]0;root@zfs:~[root@zfs ~]# 
+]0;root@zfs:~[root@zfs ~]# ls -l
+total 7124
+-rw-------. 1 root root    5570 Apr 30  2020 anaconda-ks.cfg
+-rw-r--r--. 1 root root       0 Feb 12 12:47 [0m[38;5;9marchive.tar.gz[0m
+-rw-------. 1 root root    5300 Apr 30  2020 original-ks.cfg
+-rw-r--r--. 1 root root       0 Feb 12 14:35 otus_task2.file
+-rw-r--r--. 1 root root 7275140 Feb 12 12:41 [38;5;9mzfs_task1.tar[0m
+drwxr-xr-x. 2 root root      32 May 15  2020 [38;5;27mzpoolexport[0m
+]0;root@zfs:~[root@zfs ~]# zfs receive otus/test@today <
+-bash: syntax error near unexpected token `newline'
+]0;root@zfs:~[root@zfs ~]# otus_task2.file
+-bash: otus_task2.file: command not found
+]0;root@zfs:~[root@zfs ~]# zfs receive otus/test@today < otus_task2.file
+cannot receive: failed to read from stream
+]0;root@zfs:~[root@zfs ~]# find /otus/test -name "secret_message"
+find: ‘/otus/test’: No such file or directory
+]0;root@zfs:~[root@zfs ~]# find /otus/test -name "secret_message" /otus/test/task1/file_mess/secret_message
+find: paths must precede expression: /otus/test/task1/file_mess/secret_message
+Usage: find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [path...] [expression]
+]0;root@zfs:~[root@zfs ~]# cat /otus/test/task1/file_mess/secret_message https://github.com/sindresorhus/awesome
+cat: /otus/test/task1/file_mess/secret_message: No such file or directory
+cat: https://github.com/sindresorhus/awesome: No such file or directory
+]0;root@zfs:~[root@zfs ~]# cat /otus/test/task1/file_mess/secret_message https://github.com/sindresorhus/awesome[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5Pfind /otus/test -name "secret_message" /otus/test/task1/file_mess/secret_message[K[C[C[C[C[C[C[C[C[C[C[C[C[C[Czfs receive otus/test@today < otus_task2.file[C[1P[1P[1P[1P
+cannot receive: failed to read from stream
+]0;root@zfs:~[root@zfs ~]# zfs receive /test@today < otus_task2.file[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccat /otus/test/task1/file_mess/secret_message https://github.com/sindresorhus/awesome[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5Pfind /otus/test -name "secret_message" /otus/test/task1/file_mess/secret_message[K[C[C[C[C[C[C[C[C[C[C[C[C[C[Czfs receive otus/test@today < otus_task2.file[C[C[C[C[C[C[C[C[C[C[C[C[C[C[30Potus_task2.filezfs receive otus/test@today <[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls -l[K[K[Kls -l
+total 7124
+-rw-------. 1 root root    5570 Apr 30  2020 anaconda-ks.cfg
+-rw-r--r--. 1 root root       0 Feb 12 12:47 [0m[38;5;9marchive.tar.gz[0m
+-rw-------. 1 root root    5300 Apr 30  2020 original-ks.cfg
+-rw-r--r--. 1 root root       0 Feb 12 14:35 otus_task2.file
+-rw-r--r--. 1 root root 7275140 Feb 12 12:41 [38;5;9mzfs_task1.tar[0m
+drwxr-xr-x. 2 root root      32 May 15  2020 [38;5;27mzpoolexport[0m
+]0;root@zfs:~[root@zfs ~]# zpool status
+  pool: otus
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME                         STATE     READ WRITE CKSUM
+	otus                         ONLINE       0     0     0
+	  mirror-0                   ONLINE       0     0     0
+	    /root/zpoolexport/filea  ONLINE       0     0     0
+	    /root/zpoolexport/fileb  ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus1
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus1       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdb     ONLINE       0     0     0
+	    sdc     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus2
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus2       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdd     ONLINE       0     0     0
+	    sde     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus3
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus3       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdf     ONLINE       0     0     0
+	    sdg     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus4
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus4       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdh     ONLINE       0     0     0
+	    sdi     ONLINE       0     0     0
+
+errors: No known data errors
+]0;root@zfs:~[root@zfs ~]# exit
+logout
+]0;vagrant@zfs:~[vagrant@zfs ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                   ]7;file://MacBook-sotnik.Dlink/Users/sotnik/otus-linux/les4[0m[27m[24m[Jsotnik@MacBook-sotnik les4 % [K[?2004heexit[?2004l
+
+Script done on Sat Feb 12 17:43:46 2022

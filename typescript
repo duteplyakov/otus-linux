@@ -1,0 +1,106 @@
+Script started on Sat Feb 12 15:05:51 2022
+[1m[7m%[27m[1m[0m                                                                                [0m[27m[24m[Jsotnik@MacBook-sotnik les4 % [K[?2004hvvagrant ssh[?2004l
+Last login: Sat Feb 12 12:04:15 2022 from 10.0.2.2
+]0;vagrant@zfs:~[?1034h[vagrant@zfs ~]$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   40G  0 disk 
+└─sda1   8:1    0   40G  0 part /
+sdb      8:16   0  512M  0 disk 
+sdc      8:32   0  512M  0 disk 
+sdd      8:48   0  512M  0 disk 
+sde      8:64   0  512M  0 disk 
+sdf      8:80   0  512M  0 disk 
+sdg      8:96   0  512M  0 disk 
+sdh      8:112  0  512M  0 disk 
+sdi      8:128  0  512M  0 disk 
+]0;vagrant@zfs:~[vagrant@zfs ~]$ zpool create otus1 mirror /dec/[K[Kv/sdb/sdc
+cannot resolve path '/dev/sdb/sdc'
+]0;vagrant@zfs:~[vagrant@zfs ~]$ sudo -i
+]0;root@zfs:~[?1034h[root@zfs ~]# zpool create otus1 mirror
+invalid vdev specification: mirror requires at least 2 devices
+]0;root@zfs:~[root@zfs ~]# /dev/sdb /dev/sdc[1P/sdc[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kzpool create otus1 mirror /dev/sdb /dev/sdc
+]0;root@zfs:~[root@zfs ~]# zpool list
+NAME    SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+otus1   480M  91.5K   480M        -         -     0%     0%  1.00x    ONLINE  -
+]0;root@zfs:~[root@zfs ~]# zpool listcreate otus1 mirror /dev/sdb /dev/sdc[1P[1@2[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P /dev/sdcd /dev/sdc[C[C[C[C[C[C[C[C[C[Ke
+]0;root@zfs:~[root@zfs ~]# zpool create otus2 mirror /dev/sdd /dev/sde[1P[1@3[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P /dev/sdef /dev/sde[C[C[C[C[C[C[C[C[C[Kg
+]0;root@zfs:~[root@zfs ~]# zpool create otus3 mirror /dev/sdf /dev/sdg[1P[1@4[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P /dev/sdgh /dev/sdg[C[C[C[C[C[C[C[C[C[Ki
+]0;root@zfs:~[root@zfs ~]# zpool create otus4 mirror /dev/sdh /dev/sdi3 mirror /dev/sdf /dev/sdg2 mirror /dev/sdd /dev/sde[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Clist[Kcreate otus1 mirror /dev/sdb /dev/sdc[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Clist[K
+NAME    SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+otus1   480M  91.5K   480M        -         -     0%     0%  1.00x    ONLINE  -
+otus2   480M  91.5K   480M        -         -     0%     0%  1.00x    ONLINE  -
+otus3   480M  91.5K   480M        -         -     0%     0%  1.00x    ONLINE  -
+otus4   480M  91.5K   480M        -         -     0%     0%  1.00x    ONLINE  -
+]0;root@zfs:~[root@zfs ~]# zpoll [K[K[Kop[Kl status
+  pool: otus1
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus1       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdb     ONLINE       0     0     0
+	    sdc     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus2
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus2       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdd     ONLINE       0     0     0
+	    sde     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus3
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus3       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdf     ONLINE       0     0     0
+	    sdg     ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: otus4
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME        STATE     READ WRITE CKSUM
+	otus4       ONLINE       0     0     0
+	  mirror-0  ONLINE       0     0     0
+	    sdh     ONLINE       0     0     0
+	    sdi     ONLINE       0     0     0
+
+errors: No known data errors
+]0;root@zfs:~[root@zfs ~]# zfs set compression=lzjb otus1
+]0;root@zfs:~[root@zfs ~]# zfs set compression=lz4 otus2
+]0;root@zfs:~[root@zfs ~]# zfs set compression=gzip-9 otus3
+]0;root@zfs:~[root@zfs ~]# zfs set compression=zle otus4
+]0;root@zfs:~[root@zfs ~]# 
+]0;root@zfs:~[root@zfs ~]# zfs get all | grep compression
+otus1  [01;31m[Kcompression[m[K           lzjb                   local
+otus2  [01;31m[Kcompression[m[K           lz4                    local
+otus3  [01;31m[Kcompression[m[K           gzip-9                 local
+otus4  [01;31m[Kcompression[m[K           zle                    local
+]0;root@zfs:~[root@zfs ~]# 
+]0;root@zfs:~[root@zfs ~]# for i in {1..4}; do wget -P /otus$i
+> https://gutenberg.org/cache/epub/2600/pg2600.converter.log; done[29Pfor i in {1..4}; do wget -P /otus$i[C[C[5Pzfs get all | grep compression[C[Cfor i in {1..4}; do wget -P /otus$i[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kfor i in {1..4}; do wget -P /otus$i
+> https://gutenberg.org/cache/epub/2600/pg2600.converter.log; done[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+> ex[Knd
+> :q
+> :w
+> q
+> w
+> https://gutenberg.org/cache/epub/2600/pg2600.converter.log; done
+> 
