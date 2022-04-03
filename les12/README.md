@@ -1,4 +1,4 @@
-# HW8 - Systemd
+# les12 - Systemd
 
 ## Напишем сервис, который будет раз в 30 секунд мониторить лог на предмет наличия ключевого слова. Файл и слово должны задаваться в /etc/sysconfig
 
@@ -68,10 +68,10 @@ systemctl start watchlog.timer
 ```bash
 tail -f /var/log/messages
 
-Dec 14 12:10:59 localhost systemd: Started My watchlog service.
-Dec 14 12:12:08 localhost systemd: Starting My watchlog service...
-Dec 14 12:12:09 localhost root: Tue Dec 14 12:12:09 UTC 2021: I found word, Master!
-Dec 14 12:12:09 localhost systemd: Started My watchlog service.
+Apr 02 12:10:59 localhost systemd: Started My watchlog service.
+Apr 02 12:12:08 localhost systemd: Starting My watchlog service...
+Apr 02 12:12:09 localhost root: Sat Apr 02 12:12:09 UTC 2021: I found word, Master!
+Apr 02 12:12:09 localhost systemd: Started My watchlog service.
 ```
 
 ## Из epel установим spawn-fcgi и перепишем init-скрипт на unit-файл. Имя сервиса должно также называться
@@ -122,7 +122,7 @@ systemctl status spawn-fcgi
 
 ● spawn-fcgi.service - Spawn-fcgi startup service by Otus
    Loaded: loaded (/etc/systemd/system/spawn-fcgi.service; disabled; vendor preset: disabled)
-   Active: active (running) since Tue 2021-12-14 12:21:17 UTC; 10s ago
+   Active: active (running) since Sat 2022-04-02 12:21:17 UTC; 10s ago
  Main PID: 21900 (php-cgi)
    CGroup: /system.slice/spawn-fcgi.service
            ├─21900 /usr/bin/php-cgi
@@ -159,7 +159,7 @@ systemctl status spawn-fcgi
            ├─21931 /usr/bin/php-cgi
            └─21932 /usr/bin/php-cgi
 
-Dec 14 12:21:17 hw8 systemd[1]: Started Spawn-fcgi startup service by Otus.
+Apr 02 12:21:17 hw8 systemd[1]: Started Spawn-fcgi startup service by Otus.
 ```
 
 ## Дополним юнит-файл apache httpd возможностью запустить несколько инстансов сервера с разными конфигами
@@ -284,21 +284,21 @@ systemctl start jira.service
 systemctl status jira.service
 ● jira.service - Atlassian Jira
    Loaded: loaded (/usr/lib/systemd/system/jira.service; enabled; vendor preset: disabled)
-   Active: active (running) since Wed 2021-12-15 10:45:25 UTC; 531ms ago
+   Active: active (running) since Sun 2022-04-03 10:45:25 UTC; 531ms ago
   Process: 2449 ExecStart=/opt/atlassian/jira/bin/start-jira.sh (code=exited, status=0/SUCCESS)
  Main PID: 2484 (java)
    CGroup: /system.slice/jira.service
            └─2484 /opt/atlassian/jira/jre//bin/java -Djava.util.logging.config.file=/opt/atlassian/jira/conf/logging.properties -Djava.util.logging.manag...
 
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: MMMMMM    `UOJ
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: MMMMMM
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: +MMMMM
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: MMMMM
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: `UOJ
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: Atlassian Jira
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: Version : 8.21.0
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: If you encounter issues starting or stopping Jira, please see the Troubleshooting guide at https://docs...tallation
-Dec 15 10:45:25 hw8 start-jira.sh[2449]: Server startup logs are located in /opt/atlassian/jira/logs/catalina.out
-Dec 15 10:45:25 hw8 systemd[1]: Started Atlassian Jira.
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: MMMMMM    `UOJ
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: MMMMMM
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: +MMMMM
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: MMMMM
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: `UOJ
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: Atlassian Jira
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: Version : 8.21.0
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: If you encounter issues starting or stopping Jira, please see the Troubleshooting guide at https://docs...tallation
+Apr 03 10:45:25 hw8 start-jira.sh[2449]: Server startup logs are located in /opt/atlassian/jira/logs/catalina.out
+Apr 03 10:45:25 hw8 systemd[1]: Started Atlassian Jira.
 Hint: Some lines were ellipsized, use -l to show in full.
 ```
