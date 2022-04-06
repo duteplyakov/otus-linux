@@ -155,7 +155,7 @@ volumes:
   php:
 
 networks:
-  hw14:
+  les14:
 ```
 
 - Запускаем
@@ -166,8 +166,8 @@ docker-compose up -d
 docker-compose ps
     Name                  Command               State          Ports        
 ----------------------------------------------------------------------------
-hw14_nginx_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:8080->80/tcp
-hw14_php_1     docker-php-entrypoint php-fpm    Up      9000/tcp
+les14_nginx_1   /docker-entrypoint.sh ngin ...   Up      0.0.0.0:8080->80/tcp
+les14_php_1     docker-php-entrypoint php-fpm    Up      9000/tcp
 ```
 
 > Также добавим Makefile для удобства сборки и запуска
