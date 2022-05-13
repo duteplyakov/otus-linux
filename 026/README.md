@@ -499,7 +499,7 @@ from networks import networks
 import ipaddress
 
 if __name__ == '__main__':
-    # python3 ./026/002_ipcheck/app.py > ./026/002_ipcheck/table.md
+    # python3 ./002_ipcheck/app.py > ./002_ipcheck/table.md
     hosts = dict()
     print(f'Сегмент сети | имя подсети | IP-адресация | число IP-адресов')
     print(f'--- | --- | --- | ---')
@@ -1520,9 +1520,9 @@ end
 
 Поменял на centos/7.
 
-![](./026/files/img/schema.jpeg)
+![](./files/img/schema.jpeg)
 
-Реализованная схема подключения описана в [Vagrantfile](./026/vm/Vagrantfile)
+Реализованная схема подключения описана в [Vagrantfile](./vm/Vagrantfile)
 
 <details><summary>см. Vagrantfile</summary>
 
@@ -1638,7 +1638,7 @@ end
 </details>
 
 
-![](./files/img/schema-routing.jpeg)
+![](./scheme.png)
 
 Задействовал https://github.com/haidaraM/vagrant-to-ansible-inventory
 
