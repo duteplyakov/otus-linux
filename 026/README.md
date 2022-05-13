@@ -1992,7 +1992,7 @@ office2Server              : ok=6    changed=5    unreachable=0    failed=0    s
 ```shell
 ansible-playbook playbooks/internet-router.yml > ../files/ansible-running/internet-router.txt
 ```
-[internet-router.txt](./026/files/ansible-running/internet-router.txt)
+[internet-router.txt](./files/ansible-running/internet-router.txt)
 
 <details><summary>см. internet-router.txt</summary>
 
