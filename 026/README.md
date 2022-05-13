@@ -62,7 +62,7 @@ Office2 ---/
 
 ### Найти свободные подсети
 
-[Табличный отчет](./026/001_ipcheck/table.md)
+[Табличный отчет](./001_ipcheck/table.md)
 
 
 Сегмент сети | его часть | наименование | число IP-адресов
@@ -269,12 +269,12 @@ if __name__ == '__main__':
 </details>
 
 
-[Лог скрипта](./026/001_ipcheck/report.txt)
+[Лог скрипта](./001_ipcheck/report.txt)
 
 <details><summary>см. Лог скрипта</summary>
 
 ```properties
-./026/001_ipcheck/app.py
+./001_ipcheck/app.py
 
 {'Сеть central': {'192.168.0.0/28': 'directors',
                   '192.168.0.128/25': 'undefined',
@@ -470,7 +470,7 @@ if __name__ == '__main__':
 
 ### Посчитать сколько узлов в каждой подсети, включая свободные
 
-[Табличный отчет](./026/002_ipcheck/table.md)
+[Табличный отчет](./002_ipcheck/table.md)
 
 
 Сегмент сети | имя подсети | IP-адресация | число IP-адресов
@@ -490,7 +490,7 @@ if __name__ == '__main__':
 Сеть central | wifi | 192.168.0.64/26 | 64 
 
 
-[Скрипт](./026/002_ipcheck/app.py)
+[Скрипт](./002_ipcheck/app.py)
 
 <details><summary>см. Скрипт</summary>
 
@@ -515,7 +515,7 @@ if __name__ == '__main__':
 
 ### Указать broadcast адрес для каждой подсети
 
-[Табличный отчет](./026/003_ipcheck/table.md)
+[Табличный отчет](./003_ipcheck/table.md)
 
 
 Сегмент сети | имя подсети | IP-адресация | broadcast-IP
@@ -535,7 +535,7 @@ if __name__ == '__main__':
 Сеть central | wifi | 192.168.0.64/26 | 192.168.0.127 
 
 
-[Скрипт](./026/003_ipcheck/app.py)
+[Скрипт](./003_ipcheck/app.py)
 
 <details><summary>см. Скрипт</summary>
 
@@ -544,7 +544,7 @@ from networks import networks
 import ipaddress
 
 if __name__ == '__main__':
-    # python3 ./026/003_ipcheck/app.py > ./026/003_ipcheck/table.md
+    # python3 ./003_ipcheck/app.py > ./003_ipcheck/table.md
     hosts = dict()
     print(f'Сегмент сети | имя подсети | IP-адресация | broadcast-IP')
     print(f'--- | --- | --- | ---')
@@ -566,7 +566,7 @@ if __name__ == '__main__':
 Пересечения отсутствуют
 
 
-[Скрипт](./026/004_ipcheck/app.py)
+[Скрипт](./004_ipcheck/app.py)
 
 <details><summary>см. Скрипт</summary>
 
@@ -577,8 +577,8 @@ import sys
 
 if __name__ == '__main__':
 
-    # python3 ./026/004_ipcheck/app.py md > ./026/004_ipcheck/report.md
-    # python3 ./026/004_ipcheck/app.py > ./026/004_ipcheck/report.txt
+    # python3 ./004_ipcheck/app.py md > ./004_ipcheck/report.md
+    # python3 ./004_ipcheck/app.py > ./004_ipcheck/report.txt
 
     all_ips = dict()
 
@@ -612,7 +612,7 @@ if __name__ == '__main__':
 </details>
 
 
-[Лог скрипта](./026/004_ipcheck/report.txt)
+[Лог скрипта](./004_ipcheck/report.txt)
 
 <details><summary>см. Лог скрипта</summary>
 
@@ -1396,7 +1396,7 @@ IP входит в подсети
 
 ### Соединить офисы в сеть согласно схеме и настроить роутинг
 
-В исходный [Vagrantfile](./026/erlong15_vm/Vagrantfile) внес правки
+В исходный [Vagrantfile](./erlong15_vm/Vagrantfile) внес правки
 
 <details><summary>см. Vagrantfile</summary>
 
@@ -1638,11 +1638,11 @@ end
 </details>
 
 
-![](./026/files/img/schema-routing.jpeg)
+![](./files/img/schema-routing.jpeg)
 
 Задействовал https://github.com/haidaraM/vagrant-to-ansible-inventory
 
-[импорт vagrant хостов в хосты ansible-inventory](./026/vm/v2a.py)
+[импорт vagrant хостов в хосты ansible-inventory](./vm/v2a.py)
 
 <details><summary>см. импорт vagrant хостов в хосты ansible-inventory</summary>
 
@@ -1672,7 +1672,7 @@ python3 v2a.py -o ../ansible/inventories/hosts
 
 В ДЗ я применил хранение настроек в переменной, для однотипной задачи прописывания шлюзов на интерфейсах
 
-[Параметры шлюзов](026/ansible/roles/routing/vars/main.yml)
+[Параметры шлюзов](./ansible/roles/routing/vars/main.yml)
 
 <details><summary>см. Параметры шлюзов</summary>
 
@@ -1724,7 +1724,7 @@ networks_hosts:
 
 Задача, использующая специальную ansible-переменную `inventory_hostname`, "знающую" для какого инвентори-хоста работает в данный момент плейбук.
 
-[Задача](./026/ansible/roles/routing/tasks/main.yml)
+[Задача](./ansible/roles/routing/tasks/main.yml)
 
 <details><summary>см. Задача</summary>
 
@@ -1803,7 +1803,7 @@ networks_hosts:
 
 Аналогично в рамках демонстрации работоспособности применит и `loop` и `inventory_hostname` 
 
-[Задача](./026/ansible/roles/test_001_network_connectivity/tasks/main.yml)
+[Задача](./ansible/roles/test_001_network_connectivity/tasks/main.yml)
 
 <details><summary>см. Задача</summary>
 
@@ -1903,7 +1903,7 @@ office2Router              : ok=5    changed=3    unreachable=0    failed=0    s
 ```shell
 ansible-playbook playbooks/routing.yml > ../files/ansible-running/routing.txt
 ```
-[routing.txt](./026/files/ansible-running/routing.txt)
+[routing.txt](./files/ansible-running/routing.txt)
 
 <details><summary>см. routing.txt</summary>
 
@@ -2021,7 +2021,7 @@ inetRouter                 : ok=2    changed=1    unreachable=0    failed=0    s
 ```shell
 ansible-playbook playbooks/network-hosts.yml > ../files/ansible-running/network-hosts.txt
 ```
-[network-hosts.txt](./026/files/ansible-running/network-hosts.txt)
+[network-hosts.txt](./files/ansible-running/network-hosts.txt)
 
 <details><summary>см. network-hosts.txt</summary>
 
@@ -2136,7 +2136,7 @@ traceroute 192.168.1.194 # office1Server
 ansible-playbook playbooks/test_001_network_connectivity.yml > ../files/ansible-running/test_001_network_connectivity.txt
 ```
 
-[ansible test_001_network_connectivity](./026/files/ansible-running/test_001_network_connectivity.txt)
+[ansible test_001_network_connectivity](./files/ansible-running/test_001_network_connectivity.txt)
 
 <details><summary>см. ansible test_001_network_connectivity</summary>
 
