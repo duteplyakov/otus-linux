@@ -1518,9 +1518,6 @@ end
   Error: The requested URL returned error: 404
 ```
 
-Поменял на centos/7.
-
-![](./files/img/schema.jpeg)
 
 Реализованная схема подключения описана в [Vagrantfile](./vm/Vagrantfile)
 
