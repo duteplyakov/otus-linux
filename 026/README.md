@@ -82,7 +82,7 @@ Office2 ---/
 Сеть central | 192.168.0.64/26 | wifi | 64 
 
 
-[Скрипт](./026/001_ipcheck/app.py)
+[Скрипт](./001_ipcheck/app.py)
 
 <details><summary>см. Скрипт</summary>
 
