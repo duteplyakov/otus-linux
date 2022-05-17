@@ -14,12 +14,12 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.define "client" do |client|
-        client.vm.network "private_network", ip: "192.168.50.10", virtualbox__intnet: "net1"
+        client.vm.network "private_network", ip: "192.168.11.150", virtualbox__intnet: "net1"
         client.vm.hostname = "client"
     end   
 
     config.vm.define "backup_server" do |backup_server|
-        backup_server.vm.network "private_network", ip: "192.168.50.11", virtualbox__intnet: "net1"
+        backup_server.vm.network "private_network", ip: "192.168.11.160", virtualbox__intnet: "net1"
         backup_server.vm.hostname = "backupserver"
         backup_server.vm.disk :disk, size: "2GB", name: "backup"
     end
