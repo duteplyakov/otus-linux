@@ -1,0 +1,101 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: set timezone
+    command: ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+
+  - name: install packages
+    yum: name={{ item }} state=latest 
+    with_items:
+      - bind
+      - bind-utils
+      - ntp
+      - mc
+      - vim
+      - libsemanage-python
+
+  - name: copy transferkey to all servers and the client
+    copy: src=named.zonetransfer.key dest=/etc/named.zonetransfer.key owner=root group=named mode=0644
+
+- hosts: ns01
+  become: yes
+  tasks:
+  - name: copy named.conf
+    copy: src=master-named.conf dest=/etc/named.conf owner=root group=named mode=0640
+  - name: copy zones
+    copy: src={{ item }} dest=/etc/named/ owner=root group=named mode=0660
+    with_fileglob:
+      - named.d*
+      - named.n*
+#  - name: make simlinks for slave
+#    command: "{{ item }}"
+#    with_items:
+#      - ln -s /etc/named/named.ddns.lab /etc/named/slave_named.ddns.lab
+#      - ln -s /etc/named/named.dns.lab /etc/named/slave_named.dns.lab
+#      - ln -s /etc/named/named.dns.lab.rev /etc/named/slave_named.dns.lab.rev
+  - name: copy resolv.conf to the servers
+    copy: src=servers-resolv.conf dest=/etc/resolv.conf owner=root group=root mode=0644
+  
+  - name: set /etc/named permissions
+    file: path=/etc/named owner=root group=named mode=0670
+
+  - name: creates directory for named logs
+    file:
+      path: /var/log/named
+      state: directory
+      owner: named
+      group: named
+
+  - name: ensure named is running and enabled
+    service: name=named state=restarted enabled=yes
+
+- hosts: ns02
+  become: yes
+  tasks:
+  - name: copy named.conf
+    copy: src=slave-named.conf dest=/etc/named.conf owner=root group=named mode=0640
+  - name: copy resolv.conf to the servers
+    copy: src=servers-resolv.conf dest=/etc/resolv.conf owner=root group=root mode=0644
+
+  - name: set /etc/named permissions
+    file: path=/etc/named owner=root group=named mode=0670
+
+  - name: creates directory for named logs
+    file:
+      path: /var/log/named
+      state: directory
+      owner: named
+      group: named
+
+  - name: ensure named is running and enabled
+    service: name=named state=restarted enabled=yes
+
+#  - name: ensure SELINUX allow BIND to write master zone files
+#    command: setsebool -P named_write_master_zones 1
+
+  - name: SELINUX allow BIND to write master zone files
+    seboolean:
+      name: named_write_master_zones
+      persistent: yes
+      state: yes
+    
+- hosts: client
+  become: yes
+  tasks:
+  - name: copy resolv.conf to the client
+    copy: src=client-resolv.conf dest=/etc/resolv.conf owner=root group=root mode=0644
+  - name: copy rndc conf file
+    copy: src=rndc.conf dest=/home/vagrant/rndc.conf owner=vagrant group=vagrant mode=0644
+  - name: copy motd to the client
+    copy: src=client-motd dest=/etc/motd owner=root group=root mode=0644
+
+- hosts: client2
+  become: yes
+  tasks:
+  - name: copy resolv.conf to the client
+    copy: src=client-resolv.conf dest=/etc/resolv.conf owner=root group=root mode=0644
+  - name: copy rndc conf file
+    copy: src=rndc.conf dest=/home/vagrant/rndc.conf owner=vagrant group=vagrant mode=0644
+  - name: copy motd to the client
+    copy: src=client-motd dest=/etc/motd owner=root group=root mode=0644
