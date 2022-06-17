@@ -1,0 +1,6 @@
+[router1]
+192.168.101.10 ansible_ssh_port=22
+[router2]
+192.168.101.11 ansible_ssh_port=22
+[router3]
+192.168.101.12 ansible_ssh_port=22
