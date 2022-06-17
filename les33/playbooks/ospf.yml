@@ -1,0 +1,170 @@
+---
+- name: 'Configure asymmetric OSPF routing'
+  hosts: quagga
+  become: true
+  tasks:
+
+    - name: 'Enable routing'
+      blockinfile:
+        path: /etc/sysctl.d/ip_forwarding.conf
+        create: yes
+        block: |
+          net.ipv4.ip_forward = 1
+          net.ipv4.conf.all.rp_filter = 2
+      notify:
+        - restart network
+
+    - name: 'Create loopback interface'
+      blockinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-lo.2
+        create: yes
+        block: |
+          DEVICE="{{ device }}"
+          IPADDR="{{ ipaddr }}"
+          PREFIX="{{ prefix }}"
+          NETWORK="{{ network }}"
+          ONBOOT="{{ onboot }}"
+      notify:
+        - restart network
+
+    - name: 'Install packages'
+      yum:
+        name: 
+          - quagga
+          - libselinux-python
+          - libsemanage-python
+          - tcpdump
+        state: present
+
+    - name: 'Enable firewalld'
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+    - name: 'Allow ospf protocol on r2 and r3'
+      firewalld:
+        rich_rule: rule protocol value=89 accept
+        permanent: yes
+        state: enabled
+      notify:
+        - reload firewalld
+      when: (ansible_hostname == 'r2') or (ansible_hostname == 'r3')
+
+    - name: 'Move eth0 to external zone'
+      lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-eth0
+        regexp: '^ZONE=.*$'
+        line: 'ZONE=external'
+      notify:
+        - restart network
+      when: (ansible_hostname == 'r1')
+      
+    - name: 'Move eth1 and eth2 to internal zone'
+      lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-{{ item }}
+        regexp: '^ZONE=.*$'
+        line: 'ZONE=internal'
+      loop:
+        - eth1
+        - eth2
+      notify:
+        - restart network
+      when: (ansible_hostname == 'r1')
+    
+    - name: 'Allow ospf protocol on r1'
+      firewalld:
+        zone: internal
+        rich_rule: rule protocol value=89 accept
+        permanent: yes
+        state: enabled
+      notify:
+        - reload firewalld
+      when: (ansible_hostname == 'r1')
+
+    - name: 'Configure masquerade on r1' 
+      firewalld:
+        masquerade: yes
+        state: enabled
+        permanent: yes
+        zone: external
+      notify:
+        - reload firewalld
+      when: (ansible_hostname == 'r1')
+
+    - name: 'Remove Vagrant default route on r2 and r3'
+      lineinfile:
+        path: /etc/sysconfig/network-scripts/ifcfg-eth0
+        line: 'DEFROUTE=no'
+      notify:
+        - restart network
+      when: (ansible_hostname == 'r2') or (ansible_hostname == 'r3')
+
+    - name: 'Create /etc/quagga/ospfd.conf'
+      file:
+        path: /etc/quagga/ospfd.conf
+        state: touch
+        owner: quagga
+        group: quaggavt
+        mode: '0660'
+
+    - name: 'Modify SELinux permissions for quagga'
+      seboolean:
+        name: zebra_write_config
+        state: yes
+        persistent: yes
+
+    - name: 'Enable zebra and ospfd services'
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop:
+        - zebra
+        - ospfd
+
+    - name: 'Copy zebra config file from template'
+      template:
+        src: ../templates/zebra.conf.j2
+        dest: /etc/quagga/zebra.conf
+        owner: quagga
+        group: quagga
+        mode: 0640
+      notify:
+        - restart zebra
+
+    - name: 'Copy ospfd config file from template'
+      template:
+        src: ../templates/ospfd.conf.j2
+        dest: /etc/quagga/ospfd.conf
+        owner: quagga
+        group: quaggavt
+        mode: 0660
+      notify:
+        - restart ospfd
+
+    - name: 'Restart network service'
+      service:
+        name: network
+        state: restarted
+
+  handlers:
+    - name: restart network
+      service:
+        name: network
+        state: restarted
+
+    - name: reload firewalld
+      service:
+        name: firewalld
+        state: reloaded
+
+    - name: restart zebra
+      service:
+        name: zebra
+        state: restarted
+
+    - name: restart ospfd
+      service:
+        name: ospfd
+        state: restarted

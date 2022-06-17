@@ -1,0 +1,13 @@
+device: 'lo:2'
+ipaddr: '10.0.0.2'
+prefix: '32'
+network: '10.0.0.2'
+onboot: 'yes'
+
+routername: r2
+loopback: '10.0.0.2'
+network1: '172.16.1.0/24'
+network2: '172.16.3.0/24'
+default_information_originate: ''
+eth1_cost: '10'
+eth2_cost: '10'
