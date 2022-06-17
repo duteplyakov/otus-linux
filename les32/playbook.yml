@@ -1,0 +1,138 @@
+---
+# - hosts:        all
+#   become:       yes
+#   tasks:
+#   - name:       install packages
+#     yum:
+#       name:     ['NetworkManager-libnm','nm-connection-editor','policycoreutils-python-utils']
+
+- hosts:          all
+  become:         yes
+  tasks:
+  - name:         Install frr
+    yum:
+      name:       frr
+      state:      present
+  - name:         Install tcpdump
+    yum:
+      name:       tcpdump
+      state:      present
+
+  - name:         Configure frr
+    copy:
+      src:        files/daemons
+      dest:       /etc/frr/
+    notify:       restart frr
+
+
+  - name:         Configure sysctl ipv4 forward
+    sysctl:
+      name:       net.ipv4.ip_forward
+      value:      '1'
+      sysctl_set: yes
+      state:      present
+      reload:     yes
+  - name:         Configure sysctl arp filter
+    sysctl:
+      name:       net.ipv4.conf.all.arp_filter
+      value:      '0'
+      sysctl_set: yes
+      state:      present
+      reload:     yes
+  - name:         Configure sysctl rp filter for asymmetric routing
+    sysctl:
+      name:       net.ipv4.conf.all.rp_filter
+      value:      '1'
+      sysctl_set: yes
+      state:      present
+      reload:     yes
+  handlers:
+  - name:         restart frr
+    service:
+      name:       frr
+      state:      restarted
+
+- hosts:          router1
+  become:         yes
+  tasks:
+  - name:         configure router1 vlan0 interface
+    copy:
+      src:        files/router1-vlan0.conf
+      dest:       /etc/sysconfig/network-scripts/ifcfg-eth1.0
+    notify:       network restart
+  - name:         configure router1 vlan10 interface
+    copy:
+      src:        files/router1-vlan10.conf
+      dest:       /etc/sysconfig/network-scripts/ifcfg-eth1.10
+    notify:       network restart
+  - name:         configure router1 ospfd
+    copy:
+      src:        files/router1-ospfd.conf
+      dest:       /etc/frr/ospfd.conf
+    notify:       frr restart
+  handlers:
+    - name:       network restart
+      service:
+        name:     NetworkManager
+        state:    restarted
+    - name:       frr restart
+      service:
+        name:     frr
+        state:    restarted
+
+- hosts:          router2
+  become:         yes
+  tasks:
+  - name:         configure router2 vlan0 interface
+    copy:
+      src:        files/router2-vlan0.conf
+      dest:       /etc/sysconfig/network-scripts/ifcfg-eth1.0
+    notify:       network restart
+  - name:         configure router2 vlan20 interface
+    copy:
+      src:        files/router2-vlan20.conf
+      dest:       /etc/sysconfig/network-scripts/ifcfg-eth1.20
+    notify:       network restart
+  - name:         configure router2 ospfd
+    copy:
+      src:        files/router2-ospfd.conf
+      dest:       /etc/frr/ospfd.conf
+    notify:       frr restart
+  handlers:
+    - name:       network restart
+      service:
+        name:     NetworkManager
+        state:    restarted
+    - name:       frr restart
+      service:
+        name:     frr
+        state:    restarted
+
+
+- hosts:          router3
+  become:         yes
+  tasks:
+  - name:         configure router3 vlan10 interface
+    copy:
+      src:        files/router3-vlan10.conf
+      dest:       /etc/sysconfig/network-scripts/ifcfg-eth1.10
+    notify:       network restart
+  - name:         configure router3 vlan20 interface
+    copy:
+      src:        files/router3-vlan20.conf
+      dest:       /etc/sysconfig/network-scripts/ifcfg-eth1.20
+    notify:       network restart
+  - name:         configure router3 ospfd
+    copy:
+      src:        files/router3-ospfd.conf
+      dest:       /etc/frr/ospfd.conf
+    notify:       frr restart
+  handlers:
+    - name:       network restart
+      service:
+        name:     NetworkManager
+        state:    restarted
+    - name:       frr restart
+      service:
+        name:     frr
+        state:    restarted
