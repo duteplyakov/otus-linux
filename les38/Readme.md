@@ -28,7 +28,7 @@ vagrant стэнд с проброшенными на локалхост пор�
 
 1. GO
 
-![Image 1](https://github.com/duteplyakov/otus-linux/blob/master/les38/screenshots/go.png 
+![Image 1](https://github.com/duteplyakov/otus-linux/blob/master/les38/screenshots/go.png) 
 
 --------
 2. React
@@ -38,10 +38,10 @@ vagrant стэнд с проброшенными на локалхост пор�
 --------
 3. Django
 
-![Image 3](https://github.com/duteplyakov/otus-linux/blob/master/les38/django.png) 
+![Image 3].(https://github.com/duteplyakov/otus-linux/blob/master/les38/screenshots/django.png)
 
 ## Как запустить:
- - ```git clone git@github.com:duteplyakov/les38.git && cd les38 && vagrant up```
+ - ```git clone git@github.com:duteplyakov/otus-linux/les38.git && cd les38 && vagrant up```
 
 ## Как проверить работоспособность:
 Можно перейти по ссылкам после разворачивания стенда: 
