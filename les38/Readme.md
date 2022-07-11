@@ -21,7 +21,7 @@ vagrant стэнд с проброшенными на локалхост пор�
 
 ## В процессе сделано:
 Настроен Vagrantfile и плейбук ansible для развертки следующей конфигурации:
-- проект https://github.com/otus-linux/django-helloworld c django висит на порту localhost:8000 и проксирутся nginx с порта 83
+- проект https://github.com/duteplyakov/otus-linux/blob/master/les38/files/django.service c django висит на порту localhost:8000 и проксирутся nginx с порта 83
 - проект https://github.com/staybox/go-http-hello-world с go висит на порту localhost:8800 и проксирутся nginx с порта 81
 - проект https://github.com/staybox/react-helloworld с react висит на порту localhost:7777 и проксирутся nginx с порта 82
 
