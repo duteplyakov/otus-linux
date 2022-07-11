@@ -41,7 +41,7 @@ vagrant стэнд с проброшенными на локалхост пор�
 ![Image 3](https://raw.githubusercontent.com/staybox/otus_dz28/master/screenshots/django.png) 
 
 ## Как запустить:
- - ```git clone git@github.com:staybox/otus_dz28.git && cd otus_dz28 && vagrant up```
+ - ```git clone git@github.com:duteplyakov/les38.git && cd les38 && vagrant up```
 
 ## Как проверить работоспособность:
 Можно перейти по ссылкам после разворачивания стенда: 
