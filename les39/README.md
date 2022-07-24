@@ -28,7 +28,7 @@ Please use the 'become' option instead.
 
 The 'sudo' option will be removed in a future release of Vagrant.
 
-Last login: Sun Apr 28 21:21:28 2019 from 10.0.2.2
+Last login: Sat Jul 23 21:21:28 2022 from 10.0.2.2
 
 [vagrant@primary ~]$ **sudo -iu postgres psql -c "select application_name, state, sync_priority, sync_state from pg_stat_replication;"**
 
@@ -49,7 +49,7 @@ Last login: Sun Apr 28 21:21:28 2019 from 10.0.2.2
 |client_addr      | 192.168.50.101                |
 |client_hostname  | standby.otus.test             |
 |client_port      | 40650                         |
-|backend_start    | 2019-04-28 18:20:44.556379+00 |
+|backend_start    | 2022-07-23 18:20:44.556379+00 |
 |backend_xmin     |                               |
 |state            | streaming                     |
 |sent_lsn         | 0/5000140                     |
@@ -99,7 +99,7 @@ Please use the 'become' option instead.
 
 The 'sudo' option will be removed in a future release of Vagrant.
 
-Last login: Sun Apr 28 21:23:10 2019 from 10.0.2.2
+Last login: Sut Jul 28 21:23:10 2022 from 10.0.2.2
 
 [vagrant@standby ~]$  sudo -iu postgres
 
@@ -132,7 +132,7 @@ WARN: unable to open log file '/var/log/pgbackrest/backup-backup.log': Permissio
 
       NOTE: process will continue without log file.
 
-2019-04-28 21:59:00.884 P00   INFO: backup command begin 2.13: --backup-standby --delta --log-level-console=info --log-level-file=off --pg1-host=primary.otus.test --pg1-path=/var/lib/pgsql/11/data --pg2-path=/var/lib/pgsql/11/data --process-max=2 --repo1-path=/opt/backup --repo1-retention-full=1 --stanza=backup --type=incr
+2022-07-23 21:59:00.884 P00   INFO: backup command begin 2.13: --backup-standby --delta --log-level-console=info --log-level-file=off --pg1-host=primary.otus.test --pg1-path=/var/lib/pgsql/11/data --pg2-path=/var/lib/pgsql/11/data --process-max=2 --repo1-path=/opt/backup --repo1-retention-full=1 --stanza=backup --type=incr
 
 The authenticity of host 'primary.otus.test (192.168.50.100)' can't be established.
 
@@ -144,39 +144,39 @@ Are you sure you want to continue connecting (yes/no)? y
 
 Please type 'yes' or 'no': yes
 
-2019-04-28 21:59:18.050 P00   INFO: last backup label = 20190428-211635F, version = 2.13
+2022-07-23 21:59:18.050 P00   INFO: last backup label = 20190428-211635F, version = 2.13
 
-2019-04-28 21:59:18.488 P00   INFO: execute non-exclusive pg_start_backup() with label "pgBackRest backup started at 2019-04-28 21:59:01": backup begins after the next regular checkpoint completes
+2022-07-23 21:59:18.488 P00   INFO: execute non-exclusive pg_start_backup() with label "pgBackRest backup started at 2022-07-23 21:59:01": backup begins after the next regular checkpoint completes
 
-2019-04-28 21:59:18.917 P00   INFO: backup start archive = 000000010000000000000006, lsn = 0/6000028
+2022-07-23 21:59:18.917 P00   INFO: backup start archive = 000000010000000000000006, lsn = 0/6000028
 
-2019-04-28 21:59:19.151 P00   INFO: wait for replay on the standby to reach 0/6000028
+2022-07-23 21:59:19.151 P00   INFO: wait for replay on the standby to reach 0/6000028
 
-2019-04-28 21:59:19.561 P00   INFO: replay on the standby reached 0/6000108, checkpoint 0/6000060
+2022-07-23 21:59:19.561 P00   INFO: replay on the standby reached 0/6000108, checkpoint 0/6000060
 
-2019-04-28 21:59:23.702 P02   INFO: backup file /var/lib/pgsql/11/data/base/16385/1255 (608KB, 7%) checksum dbe98fec7da346ca02a9628e67482f3119d38101
+2022-07-23 21:59:23.702 P02   INFO: backup file /var/lib/pgsql/11/data/base/16385/1255 (608KB, 7%) checksum dbe98fec7da346ca02a9628e67482f3119d38101
 
-2019-04-28 21:59:23.714 P03   INFO: backup file /var/lib/pgsql/11/data/base/16385/2608 (448KB, 10%) checksum 2ef967b3f2981e74d97474b9cb1e985eac7a4b23
+2022-07-23 21:59:23.714 P03   INFO: backup file /var/lib/pgsql/11/data/base/16385/2608 (448KB, 10%) checksum 2ef967b3f2981e74d97474b9cb1e985eac7a4b23
 
-2019-04-28 21:59:23.924 P03   INFO: backup file /var/lib/pgsql/11/data/base/16385/2838 (408KB, 19%) checksum c1e55013724720e518ba0b7b6481434c0bf872ab
+2022-07-23 21:59:23.924 P03   INFO: backup file /var/lib/pgsql/11/data/base/16385/2838 (408KB, 19%) checksum c1e55013724720e518ba0b7b6481434c0bf872ab
 
-2019-04-28 21:59:23.960 P02   INFO: backup file /var/lib/pgsql/11/data/base/16385/1249 (392KB, 24%) checksum 658764da1993be0d70bc9dd20b41c6bb2efa926d
+2022-07-23 21:59:23.960 P02   INFO: backup file /var/lib/pgsql/11/data/base/16385/1249 (392KB, 24%) checksum 658764da1993be0d70bc9dd20b41c6bb2efa926d
 
 ...
 
-2019-04-28 21:59:32.021 P02   INFO: backup file /var/lib/pgsql/11/data/base/16385/12862 (0B, 100%)
+2022-07-23 21:59:32.021 P02   INFO: backup file /var/lib/pgsql/11/data/base/16385/12862 (0B, 100%)
 
-2019-04-28 21:59:32.123 P00   INFO: incr backup size = 30MB
+2022-07-23 21:59:32.123 P00   INFO: incr backup size = 30MB
 
-2019-04-28 21:59:32.123 P00   INFO: execute non-exclusive pg_stop_backup() and wait for all WAL segments to archive
+2022-07-23 21:59:32.123 P00   INFO: execute non-exclusive pg_stop_backup() and wait for all WAL segments to archive
 
-2019-04-28 21:59:32.239 P00   INFO: backup stop archive = 000000010000000000000006, lsn = 0/6000130
+2022-07-23 21:59:32.239 P00   INFO: backup stop archive = 000000010000000000000006, lsn = 0/6000130
 
-2019-04-28 21:59:33.111 P00   INFO: new backup label = 20190428-211635F_20190428-215901I
+2022-07-23 21:59:33.111 P00   INFO: new backup label = 20190428-211635F_20190428-215901I
 
-2019-04-28 21:59:33.251 P00   INFO: backup command end: completed successfully (32368ms)
+2022-07-23 21:59:33.251 P00   INFO: backup command end: completed successfully (32368ms)
 
-2019-04-28 21:59:33.251 P00   INFO: expire command begin
+2022-07-23 21:59:33.251 P00   INFO: expire command begin
 
-2019-04-28 21:59:33.314 P00   INFO: expire command end: completed successfully (63ms)
+2022-07-23 21:59:33.314 P00   INFO: expire command end: completed successfully (63ms)
 
