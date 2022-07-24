@@ -91,7 +91,7 @@ INSERT 0 3
 
 Подключимся к бд standby:
 
-[root@admin OtusHW28]# vagrant ssh standby
+[root@admin les39]# vagrant ssh standby
 
 DEPRECATION: The 'sudo' option for the Ansible provisioner is deprecated.
 
