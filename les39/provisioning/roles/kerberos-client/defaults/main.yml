@@ -1,0 +1,6 @@
+---
+kadmin_user: root/admin
+kadmin_pass: pass
+kerb_user: vagrant
+kerb_user_pass: vagrant
+...

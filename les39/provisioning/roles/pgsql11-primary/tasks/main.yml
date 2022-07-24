@@ -1,0 +1,121 @@
+---
+- name: install postgres reposiroty from url
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm
+
+- name: PostgreSQL 11 server install
+  yum:
+    name: 
+      - postgresql11-server
+      - postgresql11
+      - python-psycopg2
+      - pgbackrest
+    state: latest
+
+- name: Set postgresql as a service
+  systemd:
+    name: postgresql-11
+    enabled: yes
+    masked: no
+
+- name: Check if postgres database dir exsits
+  stat:
+    path: /var/lib/pgsql/11/initdb.log
+  register: pg_data_exist
+
+- name: Postgres init database
+  action: command
+    /usr/pgsql-11/bin/postgresql-11-setup
+    initdb  
+  when: pg_data_exist.stat.exists == False
+
+- name: Start PostgreSQL server
+  systemd:
+    name: postgresql-11
+    state: started
+
+- name: Add replica user
+  become_user: postgres  
+  command: psql -c "CREATE USER replication REPLICATION LOGIN CONNECTION LIMIT 5 ENCRYPTED PASSWORD 'natali7';"
+
+- name: Add pg_hba.conf to primary data directory
+  template: 
+    src: pg_hba.conf.j2
+    dest: /var/lib/pgsql/11/data/pg_hba.conf
+    owner: postgres
+    group: postgres
+    mode: 0700
+
+- name: Add postgres.conf to primary data directory
+  template: 
+    src: postgresql.primary.conf.j2
+    dest: /var/lib/pgsql/11/data/postgresql.conf
+    owner: postgres
+    group: postgres
+    mode: 0700
+
+- name: Add pg_ident.conf to primary data directory
+  template: 
+    src: pg_ident.conf.j2
+    dest: /var/lib/pgsql/11/data/pg_ident.conf
+    owner: postgres
+    group: postgres
+    mode: 0700
+
+- name: Add pgbackrest.conf to primary data directory
+  template: 
+    src: pgbackrest.conf.j2
+    dest: /etc/pgbackrest.conf
+
+- name: create /usr/local/pgsql
+  file:
+    path: /usr/local/pgsql
+    state: directory
+    owner: postgres
+    group: postgres
+    mode: 0700
+
+- name: create /usr/local/pgsql/etc
+  file:
+    path: /usr/local/pgsql/etc
+    state: directory
+    owner: postgres
+    group: postgres
+    mode: 0700
+
+- name: create /var/log/pgbackrest
+  file:
+    path: /var/log/pgbackrest
+    state: directory
+    owner: postgres
+    group: postgres
+    mode: 0700
+
+- name: copy krb5.keytab
+  copy:
+    remote_src: true
+    src: /etc/krb5.keytab
+    dest: /usr/local/pgsql/etc/krb5.keytab
+    group: postgres
+    owner: postgres
+    mode: 0644
+  notify: Restart postgres
+
+- name: change owner on network share
+  file:
+    path: /opt/backup
+    owner: postgres
+
+- name: Start PostgreSQL server
+  systemd:
+    name: postgresql-11
+    state: restarted
+
+- name: create stanza
+  become_user: postgres
+  shell: pgbackrest --stanza=backup --log-level-console=info stanza-create
+
+- name: create backup from primary
+  become_user: postgres
+  shell: pgbackrest --stanza=backup --log-level-console=info backup
+...
