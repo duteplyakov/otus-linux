@@ -20,7 +20,7 @@
 
 На Primary выполним следующие команды:
 
-[root@admin OtusHW28]# vagrant ssh primary
+[root@admin les39]# vagrant ssh primary
 
 DEPRECATION: The 'sudo' option for the Ansible provisioner is deprecated.
 
