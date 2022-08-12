@@ -1,0 +1,50 @@
+---
+- name: Add host entries to /etc/hosts
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ item }}"
+  loop:
+    - '{{ master_server_ip }} master'
+    - '{{ replica_server_ip }} replica'
+
+- name: Install common packages
+  yum:
+    name:
+      - vim
+    state: latest
+
+- name: Install mysql 5.7 repo
+  yum:
+    name: https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+    state: present
+
+- name: Install mysql server
+  yum: 
+    name: mysql-community-server
+    state: present
+  notify: Restart mysql
+
+- name: Create dir for bin logs
+  file:
+    path: /var/log/mysql/
+    owner: mysql
+    group: mysql
+    state: directory
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Grep mysql temp root passwd
+  shell: "grep 'A temporary password' /var/log/mysqld.log | awk -F ' ' '{print $(NF)}'"
+  register: temp_root_passwd
+
+- name: Reset root paswd
+  shell: mysql --user root --password='{{ temp_root_passwd.stdout }}' --connect-expired-password --execute="ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '{{ mysql_root_password }}';"
+
+- name: Include master tasks
+  include_tasks: master.yml
+  when: '"master" in inventory_hostname'
+
+- name: Include replica tasks
+  include_tasks: replica.yml
+  when: '"replica" in inventory_hostname'

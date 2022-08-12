@@ -1,0 +1,15 @@
+---
+- name: Copy replica config
+  copy: 
+    src: files/replica.my.cnf
+    dest: /etc/my.cnf
+  notify: Restart mysql
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Configure replication
+  command: mysql -u root -p'{{ mysql_root_password }}' -e "change master to master_host='master', master_auto_position=1, Master_User='{{ mysql_user }}', master_password='{{ mysql_user_password }}';"
+
+- name: Start replication
+  command: mysql -u root -p'{{ mysql_root_password }}' -e "start slave;"

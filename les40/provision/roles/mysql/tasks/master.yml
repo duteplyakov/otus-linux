@@ -1,0 +1,21 @@
+---
+- name: Copy master config
+  copy: 
+    src: files/master.my.cnf
+    dest: /etc/my.cnf
+  notify: Restart mysql
+
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: Create database user
+  command: mysql -u root -p'{{ mysql_root_password }}' -e "CREATE USER '{{ mysql_user }}'@'%' IDENTIFIED BY '{{ mysql_user_password }}';"
+
+- name: Grant replication slave 
+  command: mysql -u root -p'{{ mysql_root_password }}' -e "GRANT REPLICATION SLAVE ON *.* TO '{{ mysql_user }}'@'%';"
+
+- name: Create database
+  command: mysql -u root -p'{{ mysql_root_password }}' -e "CREATE DATABASE bet;"
+
+- name: Restore database dump
+  command: mysql -u root -p'{{ mysql_root_password }}' bet -e "source /vagrant/bet.dmp"

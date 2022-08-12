@@ -1,0 +1,5 @@
+master_server_ip: 192.168.50.20
+replica_server_ip: 192.168.50.21
+mysql_root_password: 'Root-#qwe!123'
+mysql_user: replicator
+mysql_user_password: 'Replica-#qwe!123'
