@@ -28,7 +28,7 @@ Master
 ```
 [mysqld]
 
-bind-address = 192.168.50.20
+bind-address = 192.168.10.5
 
 binlog-checksum=crc32
 gtid-mode=on
@@ -49,7 +49,7 @@ Replica
 ```
 [mysqld]
 
-bind-address = 192.168.50.21
+bind-address = 192.168.10.6
 
 binlog-checksum=crc32
 gtid-mode=on
