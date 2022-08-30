@@ -1,0 +1,21 @@
+---
+- hosts: database
+  become: true
+  roles:
+    - firewall-setup
+    - filebeat
+    - postgresql
+    - pgbackrest
+    - zabbix-agent
+    - ssh-keychange
+  tasks:
+    - name: Open 5432 port for default zone
+      firewalld:
+        port: 5432/tcp
+        permanent: yes
+        state: enabled
+    
+    - name: Restart firewalld
+      systemd:
+        name: firewalld
+        state: restarted

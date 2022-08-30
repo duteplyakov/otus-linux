@@ -1,0 +1,37 @@
+---
+- hosts: elk
+  become: true
+  roles:
+    - firewall-setup
+    - ssh-keychange
+    - elk
+    - zabbix-agent
+  tasks:
+    - name: Open 5000/tcp port for default zone
+      firewalld:
+        port: 5000/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Open 5000/udp port for default zone
+      firewalld:
+        port: 5000/udp
+        permanent: yes
+        state: enabled
+
+    - name: Open 5601 port for default zone
+      firewalld:
+        port: 5601/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Open 9200 port for default zone
+      firewalld:
+        port: 9200/tcp
+        permanent: yes
+        state: enabled
+    
+    - name: Restart firewalld
+      systemd:
+        name: firewalld
+        state: restarted

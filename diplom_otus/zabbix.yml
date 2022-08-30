@@ -1,0 +1,35 @@
+---
+- hosts: zabbix
+  become: true
+  roles:
+    - firewall-setup
+    - postgresql-client
+    - nginx
+    - filebeat
+    - zabbix-agent
+    - zabbix-server
+    - ssh-keychange
+
+  tasks:
+    - name: Open HTTP port for default zone
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Open HTTPS port for default zone
+      firewalld:
+        port: 443/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Open zabbix-server port for default zone
+      firewalld:
+        port: 10051/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Restart firewalld
+      systemd:
+        name: firewalld
+        state: restarted

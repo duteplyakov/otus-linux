@@ -1,0 +1,37 @@
+---
+- hosts: webserver
+  become: true
+  roles:
+    - firewall-setup
+    - nginx
+    - java
+    - postgresql-client
+    - filebeat
+    - jira
+    - zabbix-agent
+    - role: borgbackup
+      borg_repository: vagrant@backup:/var/backups/jira/home
+      borg_source_directories:
+        - /var/atlassian/application-data/jira
+      borg_retention_policy:
+        keep_hourly: 3
+        keep_daily: 7
+        keep_weekly: 4
+        keep_monthly: 6
+    - role: selinux-master
+      selinux_booleans:
+        - { name: 'httpd_can_network_connect', state: 'on', persistent: 'yes' }
+    - ssh-keychange
+    - jira-restore
+
+  tasks:
+    - name: Open HTTP port for default zone
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
+
+    - name: Restart firewalld
+      systemd:
+        name: firewalld
+        state: restarted

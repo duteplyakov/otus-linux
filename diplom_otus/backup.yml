@@ -1,0 +1,26 @@
+---
+- hosts: backup
+  become: true
+  roles:
+    - firewall-setup
+    - pgbackrest
+    - role: borgbackup
+      borg_repository: /var/backups/jira/home
+      borg_source_directories:
+        - /var/atlassian/application-data/jira
+      borg_retention_policy:
+        keep_hourly: 3
+        keep_daily: 7
+        keep_weekly: 4
+        keep_monthly: 6
+    - zabbix-agent
+    - ssh-keychange
+
+  tasks:
+    - name: Create backup dirs
+      file:
+        path: /var/backups
+        state: directory
+
+    - name: Download startup backups
+      shell: rsync -a /vagrant/backups/ /var/backups/

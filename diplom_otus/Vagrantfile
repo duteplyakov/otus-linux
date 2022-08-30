@@ -1,0 +1,107 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+
+MACHINES = {
+  :backup => {
+        :box_name => "centos/7",
+        :memory => 1024,
+        :cpus => 4,
+        :ip_addr => '10.100.100.103'
+  },
+  :database => {
+        :box_name => "centos/7",
+        :memory => 3072,
+        :cpus => 4,
+        :ip_addr => '10.100.100.101'
+  },
+  :webserver => {
+        :box_name => "centos/7",
+        :memory => 6144,
+        :cpus => 4,
+        :ip_addr => '10.100.100.100'
+  },
+  :zabbix => {
+        :box_name => "centos/7",
+        :memory => 2048,
+        :cpus => 4,
+        :ip_addr => '10.100.100.102'
+  },
+  :elk => {
+        :box_name => "centos/7",
+        :memory => 5120,
+        :cpus => 4,
+        :ip_addr => '10.100.100.104'
+  }
+}
+
+Vagrant.configure("2") do |config|
+
+  MACHINES.each do |boxname, boxconfig|
+
+      config.vm.define boxname do |box|
+
+          box.vm.box = boxconfig[:box_name]
+          # Disable Gueast Additions install
+          box.vbguest.auto_update = false
+          box.vm.host_name = boxname.to_s
+
+          box.vm.network "private_network", ip: boxconfig[:ip_addr]
+
+          box.vm.provider :virtualbox do |vb|
+            # vb.customize ["modifyvm", :id, "--memory", "200"]
+            vb.memory = boxconfig[:memory]
+            vb.cpus = boxconfig[:cpus]
+          end
+          
+          box.vm.provision "shell", inline: <<-SHELL
+            localedef -i ru_RU -f UTF-8 ru_RU.UTF-8
+            # yum -y install telnet
+            sed -i 's/#PermitRootLogin yes/PermitRootLogin without-password/g' /etc/ssh/sshd_config
+            systemctl restart sshd
+            cat /vagrant/hosts-file >> /etc/hosts
+            yum -y install telnet
+          SHELL
+
+      end
+
+  end
+
+  config.vm.define "backup" do |backup|
+    backup.vm.network "forwarded_port", guest: 22, host: 50023
+    backup.vm.provision "ansible" do |ansible|
+      ansible.playbook = "backup.yml"
+    end
+  end
+
+  config.vm.define "database" do |database|
+    database.vm.network "forwarded_port", guest: 22, host: 50021
+    database.vm.provision "ansible" do |ansible|
+      ansible.playbook = "database.yml"
+    end
+  end
+
+  config.vm.define "webserver" do |webserver|
+    webserver.vm.network "forwarded_port", guest: 80, host: 8081
+    webserver.vm.network "forwarded_port", guest: 22, host: 50020
+    webserver.vm.provision "ansible" do |ansible|
+      ansible.playbook = "webserver.yml"
+    end
+  end
+
+  config.vm.define "zabbix" do |zabbix|
+    zabbix.vm.network "forwarded_port", guest: 80, host: 8080
+    zabbix.vm.network "forwarded_port", guest: 443, host: 8443
+    zabbix.vm.network "forwarded_port", guest: 22, host: 50022
+    zabbix.vm.provision "ansible" do |ansible|
+      ansible.playbook = "zabbix.yml"
+    end
+  end
+
+  config.vm.define "elk" do |elk|
+    elk.vm.network "forwarded_port", guest: 5601, host: 5601
+    elk.vm.network "forwarded_port", guest: 22, host: 50024
+    elk.vm.provision "ansible" do |ansible|
+      ansible.playbook = "elk.yml"
+    end
+  end
+end
