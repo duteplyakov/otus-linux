@@ -1,0 +1,8 @@
+- name: restore compose
+  shell: mkdir /var/docker-elk && rsync -a root@backup:/var/backups/elk/compose/ /var/docker-elk/
+
+- name: restore volumes
+  shell: mkdir /var/lib/docker/volumes/docker-elk_elasticsearch/ && rsync -a root@backup:/var/backups/elk/volumes/ /var/lib/docker/volumes/docker-elk_elasticsearch/
+
+- name: run docker-compose
+  shell: cd /var/docker-elk && docker-compose up -d

@@ -1,0 +1,4 @@
+filebeat_version: 7.10.2
+elk_host: elk
+elk_user: elastic
+elk_passwd: lAM34W0KV0jwuZD8chuh

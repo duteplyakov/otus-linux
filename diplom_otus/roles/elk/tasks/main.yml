@@ -1,0 +1,10 @@
+---
+- name: install docker engine
+  include_tasks: install_docker.yml
+
+- name: install docker-compose
+  include_tasks: install_docker_compose.yml
+
+- name: restore elk config from backup
+  include_tasks: restore_config.yml
+...

@@ -1,0 +1,24 @@
+---
+- name: enable docker-ce yum repository
+  yum_repository:
+    name: "docker-ce-stable"
+    description: "Docker CE Stable RPMs for RHEL/CentOS"
+    baseurl: "https://download.docker.com/linux/centos/$releasever/$basearch/stable"
+    file: "docker-ce-stable"
+    gpgcheck: yes
+    enabled: yes
+    gpgkey: "https://download.docker.com/linux/centos/gpg"
+
+- name: Install docker engine packages
+  yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+- name: Start and enable docker
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+...
