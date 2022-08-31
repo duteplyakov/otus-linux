@@ -1,0 +1,27 @@
+
+module zabbix-custom 1.0;
+
+require {
+	type postgresql_port_t;
+	type ssh_port_t;
+	type zabbix_t;
+	type zabbix_var_run_t;
+	type httpd_t;
+	class sock_file { create unlink };
+	class tcp_socket name_connect;
+	class unix_stream_socket connectto;
+}
+
+#============= httpd_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow httpd_t postgresql_port_t:tcp_socket name_connect;
+
+#============= zabbix_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow zabbix_t self:unix_stream_socket connectto;
+
+#!!!! This avc is allowed in the current policy
+allow zabbix_t ssh_port_t:tcp_socket name_connect;
+allow zabbix_t zabbix_var_run_t:sock_file { create unlink };
