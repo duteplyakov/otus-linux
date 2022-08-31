@@ -1,0 +1,4 @@
+---
+postgresql_include_dir: "conf.d"
+postgresql_custom_config: "10-main.conf"
+...

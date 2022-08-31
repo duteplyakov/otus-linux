@@ -1,0 +1,12 @@
+---
+- name: start/enable nginx
+  systemd:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: restart/enable
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes

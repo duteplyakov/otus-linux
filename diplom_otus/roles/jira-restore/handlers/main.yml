@@ -1,0 +1,16 @@
+---
+- name: reload systemd
+  systemd:
+    daemon_reload: yes
+
+- name: Restart and enable nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+- name: Start and enable jira
+  systemd:
+    name: jira
+    state: started
+    enabled: yes

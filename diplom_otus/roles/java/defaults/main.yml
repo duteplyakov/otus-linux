@@ -1,0 +1,11 @@
+---
+java_type: jre
+java_release_version: 8
+java_release: latest
+openjdk_impl: hotspot
+host_os: linux
+host_arch: x64
+java_home_directory: /opt/java
+java_default_path: "{{ java_home_directory }}/default"
+java_environment_update: yes
+openjdk_api_url: "https://api.adoptopenjdk.net/v2/info/releases/openjdk{{ java_release_version }}?os={{ host_os }}&arch={{ host_arch }}&type={{ java_type }}&openjdk_impl={{ openjdk_impl }}&release={{ java_release }}"

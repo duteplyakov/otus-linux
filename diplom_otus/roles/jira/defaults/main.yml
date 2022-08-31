@@ -1,0 +1,5 @@
+jira_version: 8.13.3
+DBHost: database
+DBName: jira
+DBUser: jira
+DBPassword: jira

@@ -1,0 +1,24 @@
+---
+- name: Start and enable firewalld service
+  systemd:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- name: Open ssh-port for default zone
+  firewalld:
+    port: 22/tcp
+    permanent: yes
+    state: enabled
+
+- name: Open zabbix-agent port for default zone
+  firewalld:
+    port: 10050/tcp
+    permanent: yes
+    state: enabled
+
+- name: Restart firewalld
+  systemd:
+    name: firewalld
+    state: restarted
+...

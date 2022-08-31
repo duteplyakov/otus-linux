@@ -1,0 +1,12 @@
+jira_version: 8.13.3
+jira_user: jira
+jira_app_directory: /opt/atlassian/jira
+jira_home_directory: /var/atlassian/application-data/jira
+java_default_path: /opt/java/default
+jdbc_version: 42.2.18
+backup_date: 2021-01-26T08
+parent_host_ip: jira
+DBHost: database
+DBName: jira
+DBUser: jira
+DBPassword: jira

@@ -1,0 +1,26 @@
+- block:
+  - name: install yum-utils
+    yum:
+      name: yum-utils
+      state: present
+  - name: add nginx repo
+    template:
+      src: nginx_rhel.repo.j2
+      dest: /etc/yum.repos.d/nginx.repo
+  - name: install nginx
+    yum:
+      name: nginx
+      state: latest
+    notify:
+      - start/enable nginx
+    when: nginx_version is not defined
+
+  - name: install specific version nginx
+    yum:
+      name: nginx-{{ nginx_version }}
+    notify:
+      - start/enable nginx
+    when: nginx_version is defined
+
+  when: ansible_os_family == 'RedHat'
+  

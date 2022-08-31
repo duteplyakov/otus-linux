@@ -1,0 +1,28 @@
+# THIS FILE IS ANSIBLE MANAGED.
+# HANDS OFF!
+#
+# pg_hba.conf: client authentication control file for PostgreSQL
+#
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# Local socket connections (peer)
+local   all             postgres                                peer
+local   all             all                                     peer
+
+# IPv4 local connections (authenticated)
+{% if postgresql_hba_tcp_local is defined %}
+{% for item in postgresql_hba_tcp_local %}
+host	{{ item.db }}		{{ item.user }}		127.0.0.1/32		md5
+{% endfor %}
+{% endif %}
+## ANSIBLE MANAGED ##
+# IPv4 local connections (ident):
+host	all		all		127.0.0.1/32		md5
+host	all		all		10.100.100.0/24		md5
+# IPv4 remote connections
+{% if postgresql_hba_tcp is defined %}
+{% for item in postgresql_hba_tcp %}
+host	{{ item.db }}		{{ item.user }}		{{ item.address }}		{{ item.method|d('md5') }}
+{% endfor %}
+{% endif %}
+### EOF ###

@@ -1,0 +1,58 @@
+# THIS FILE IS ANSIBLE MANAGED.
+# HANDS OFF!
+
+# Connection Settings
+listen_addresses = '*'
+port = '5432'
+max_connections = 100
+
+# CPU
+max_worker_processes = 2
+max_parallel_workers_per_gather = 1
+
+# Memory
+#max_memory_mb = 256
+shared_buffers = 64
+effective_cache_size = 192
+#maintenance_work_mem = 16
+work_mem = 128
+
+# Disk
+random_page_cost = 4
+effective_io_concurrency = 2
+checkpoint_completion_target = 0.7
+#checkpoint_segments = 32
+huge_pages = try
+
+# WAL
+min_wal_size = 100MB
+max_wal_size = 500MB
+wal_level = replica
+wal_log_hints = off
+max_wal_senders = 0
+
+# Archiving
+archive_mode = off
+archive_command = '{{ wal_archive_command }}'
+archive_timeout = 1800
+
+
+# Log
+log_timezone = 'Europe/Moscow'
+
+# Autovacuum Parameters
+autovacuum = on
+autovacuum_max_workers = 3
+autovacuum_vacuum_threshold = 50
+autovacuum_analyze_threshold = 50
+autovacuum_vacuum_scale_factor = 0.2
+autovacuum_analyze_scale_factor = 0.1
+
+# Locale and Formatting
+datestyle = 'iso, dmy'
+timezone = 'Europe/Moscow'
+lc_messages = '{{ postgresql_lc_messages }}'
+lc_monetary = '{{ postgresql_locale }}'
+lc_numeric = '{{ postgresql_locale }}'
+lc_time = '{{ postgresql_locale }}'
+# default_text_search_config = '{{ postgresql_conf['default_text_search_config']|default('pg_catalog.russian') }}'

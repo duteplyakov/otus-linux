@@ -1,0 +1,44 @@
+events {
+    worker_connections 1024;
+}
+
+http {
+
+upstream jira {
+    server 127.0.0.1:8080;
+}
+
+server {
+        server_name jira;
+        listen 80;
+
+        access_log /var/log/nginx/jira_access.log;
+        error_log /var/log/nginx/jira_error.log;
+
+        client_max_body_size 45M;
+        keepalive_timeout   70;
+
+location / {
+        add_header 'Access-Control-Allow-Origin' 'jira';
+        proxy_pass http://{{ parent_host_ip }};
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_redirect  off;
+        proxy_connect_timeout 360s;
+        proxy_send_timeout 300s;
+        proxy_read_timeout 300s;
+        if ($uri ~* "/.*\.\."){ return 405; }
+}
+
+location /secure/TempoAccountBoard!report.jspa {
+        if ($arg_account) {
+                return 302 http://{{ parent_host_ip }}/secure/Tempo.jspa#/accounts/?search=$arg_account;
+        }
+}
+}
+}

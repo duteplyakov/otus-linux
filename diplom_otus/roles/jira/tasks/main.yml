@@ -1,0 +1,30 @@
+---
+- name: Install fontconfig
+  yum:
+    name: fontconfig
+    state: present
+
+- name: Apply pgpass for user root
+  template:
+    src: pgpass.j2
+    dest: /root/.pgpass
+    mode: 0600
+
+
+- name: Setup PostgreSQL Database
+  shell: |
+    psql -U postgres -w -p 5432 -h {{ DBHost }} -c "CREATE USER {{ DBUser }} WITH PASSWORD '{{ DBPassword }}';"
+    psql -U postgres -w -p 5432 -h {{ DBHost }} -c "CREATE DATABASE {{ DBName }} WITH ENCODING 'UTF8' LC_COLLATE='C' LC_CTYPE='C' TEMPLATE=template0 OWNER {{ DBUser }};"
+    psql -U postgres -w -p 5432 -h {{ DBHost }} -c "GRANT ALL ON DATABASE {{ DBName }} TO {{ DBUser }};"
+
+- name: Fetch jira binary installer
+  get_url:
+    url: https://product-downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-{{ jira_version }}-x64.bin
+    dest: /tmp/atlassian-jira-software-{{ jira_version }}-x64.bin
+    mode: u=rwx,g=rx,o=rx
+
+- name: Apply filebeat nginx module
+  template:
+    src: filebeat-nginx.yml
+    dest: /etc/filebeat/modules.d/nginx.yml
+...

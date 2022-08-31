@@ -1,0 +1,15 @@
+---
+- name: reload postgresql direct
+  become: yes
+  become_user: postgres
+  command: >
+    /usr/pgsql-{{ postgresql_version_raw }}/bin/pg_ctl -D {{ postgresql_datadir }} reload
+  when: postgresql_reload_direct
+  register: pg_reload_status
+  changed_when:
+    - pg_reload_status.rc == 0
+    - pg_reload_status.stdout is search('signaled')
+  failed_when:
+    - pg_reload_status.rc != 0
+    - pg_reload_status.stderr is not search('Is server running')
+...

@@ -1,0 +1,25 @@
+---
+- name: enable PostgreSQL yum repository
+  yum_repository:
+    name: "pgdg{{ postgresql_version_norm }}"
+    description: "PostgreSQL {{ postgresql_version_raw }} $releasever - $basearch"
+    baseurl: "https://download.postgresql.org/pub/repos/yum/{{ postgresql_version_raw }}/redhat/rhel-$releasever-$basearch"
+    file: "pgdg-{{ postgresql_version_norm }}-centos"
+    gpgcheck: yes
+    enabled: yes
+    gpgkey: "http://ftp.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-{{ postgresql_version_norm }}"
+
+- name: Install PostgreSQL packages
+  yum:
+    name:
+      - postgresql{{ postgresql_version_norm }}
+      - postgresql{{ postgresql_version_norm }}-server
+      - postgresql{{ postgresql_version_norm }}-contrib
+      - python2-psycopg2-2.8.2
+
+- name: Install additional packages
+  yum:
+    name: "{{ postgresql_additional_packages }}"
+  when: postgresql_additional_packages|length > 0
+  tags: [ packages ]
+...

@@ -1,0 +1,119 @@
+---
+- name: Verify OS requirements
+  assert:
+    that:
+      - ansible_distribution_file_variety == "RedHat"
+      - ansible_distribution_major_version|int >= 7
+    msg: "This role is for RHEL (CentOS) version 7 or higher"
+
+- name: Kernel settings
+  include_tasks: sysctl.yml
+  when:  sysctl_conf is defined and sysctl_conf | length > 0
+  tags: [ sysctl, kernel ]
+
+- name: Disable transparent huge pages
+  include_tasks: thp.yml
+  when: disable_thp is defined and disable_thp == true
+  tags: [ disable_thp ]
+
+- name: Include packages
+  include_tasks: packages.yml
+  tags: [ packages ]
+
+- name: PostgreSQL homedir owner and mode
+  file:
+    path: "{{ postgresql_homedir }}"
+    state: directory
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_user }}"
+    mode: 0750
+  tags: [ initdb ]
+
+- name: Apply Russian locale
+  shell: localedef -i ru_RU -f UTF-8 ru_RU.UTF-8
+
+- name: DB cluster initialization
+  become_user: "{{ postgresql_user }}"
+  command: >
+    /usr/pgsql-{{ postgresql_version_raw }}/bin/initdb
+    --pgdata={{ postgresql_datadir | quote }}
+    --encoding={{ postgresql_encoding }}
+    --locale={{ postgresql_locale }}
+    --lc-collate={{ postgresql_lc_collate|default(postgresql_locale) }}
+    --lc-messages={{ postgresql_lc_messages }}
+  args:
+    creates: "{{ postgresql_datadir }}/PG_VERSION"
+  tags: [ initdb ]
+
+- name: Custom config and WAL backup dirs
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_user }}"
+    mode: 0700
+  loop:
+    - "{{ postgresql_datadir }}/{{ postgresql_include_dir }}"
+    - "{{ postgresql_basedir }}/pg_archive"
+  tags: [ initdb ]
+
+- name: Include directory in postgresql.conf
+  become: yes
+  become_user: "{{ postgresql_user }}"
+  blockinfile:
+    path: "{{ postgresql_datadir }}/postgresql.conf"
+    insertafter: EOF
+    create: yes
+    block: |
+      include_dir = '{{ postgresql_include_dir }}'
+  tags: [ initdb ]
+
+- name: Template custom PostgreSQL configuration
+  become_user: "{{ postgresql_user }}"
+  template:
+    src: "{{ postgresql_custom_config }}.j2"
+    dest: "{{ postgresql_datadir }}/{{ postgresql_include_dir }}/{{ postgresql_custom_config }}"
+    mode: 0600
+  notify: reload postgresql direct
+  tags: [ initdb ]
+
+- name: Include modules config
+  include: modules.yml
+  tags: [ modules ]
+
+- name: Template custom PostgreSQL host-based authentication
+  become_user: "{{ postgresql_user }}"
+  template:
+    src: "pg_hba.conf.j2"
+    dest: "{{ postgresql_datadir }}/pg_hba.conf"
+    mode: 0600
+  when: postgresql_hba_enable
+  notify: reload postgresql direct
+  tags: [ initdb, hba ]
+
+- name: Template password file (.pgpass)
+  template:
+    src: pgpass.j2
+    dest: "{{ postgresql_homedir }}/.pgpass"
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_user }}"
+    mode: 0400
+  when: postgresql_pgpass_entries|length > 0
+
+- name: PostgreSQL service enabled and started
+  service:
+    name: "postgresql-{{ postgresql_version_raw }}"
+    state: started
+    enabled: yes
+
+- name: Set postgres passwd (NOT 4 PRODUCTION!)
+  shell: sudo -iu postgres psql -c "ALTER USER postgres WITH PASSWORD 'postgres';"
+
+- name: Restore DB from backup
+  shell: sudo -iu postgres psql -U postgres -d postgres < /vagrant/backups/postgres.sql
+
+- name: Apply filebeat module
+  template:
+    src: filebeat-postgresql.yml
+    dest: /etc/filebeat/modules.d/postgresql.yml
+...

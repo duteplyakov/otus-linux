@@ -1,0 +1,31 @@
+---
+- name: Install EPEL
+  yum:
+    name:
+      - epel-release
+
+- name: enable PostgreSQL common yum repository
+  yum_repository:
+    name: "pgdg-common"
+    description: "PostgreSQL common RPMs for RHEL/CentOS"
+    baseurl: "https://download.postgresql.org/pub/repos/yum/common/redhat/rhel-$releasever-$basearch"
+    file: "pgdg-redhat-all"
+    gpgcheck: yes
+    enabled: yes
+    gpgkey: "https://ftp.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG"
+
+- name: Install pgbackrest
+  yum:
+    name:
+      - pgbackrest
+
+- name: disable PostgreSQL common yum repository
+  yum_repository:
+    name: "pgdg-common"
+    description: "PostgreSQL common RPMs for RHEL/CentOS"
+    baseurl: "https://download.postgresql.org/pub/repos/yum/common/redhat/rhel-$releasever-$basearch"
+    file: "pgdg-redhat-all"
+    gpgcheck: yes
+    enabled: no
+    gpgkey: "https://ftp.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG"
+...

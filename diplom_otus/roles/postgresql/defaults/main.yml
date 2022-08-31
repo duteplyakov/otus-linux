@@ -1,0 +1,77 @@
+---
+postgresql_version: 9.6
+postgresql_version_raw: "{{ postgresql_version|string }}"
+postgresql_version_norm: "{{ postgresql_version_raw|regex_replace('\\.', '') }}"
+postgresql_homedir: "/var/lib/pgsql"
+postgresql_basedir: "{{ postgresql_homedir }}/{{ postgresql_version_raw }}"
+postgresql_datadir: "{{ postgresql_basedir }}/data"
+postgresql_encoding: "utf8"
+postgresql_locale: "ru_RU.UTF-8"
+postgresql_lc_messages: "en_US.UTF-8"
+postgresql_user: postgres
+postgresql_pgpass_entries: []
+postgresql_conf: {}
+postgresql_additional_packages: []
+postgresql_users: []
+postgresql_databases: []
+postgresql_extensions: []
+sysctl_conf: []
+disable_thp: false
+pg_stat_statements: {}
+postgresql_reload_direct: false
+postgresql_hba_enable: true
+postgresql_wal_backup_enable: false
+postgresql_drop_databases: false
+pgbackrest_user: pgbackrest
+
+postgresql_databases:
+  - { db: "jiradb_rus", owner: "jiraffuser", encoding: "UNICODE", lc_collate: "C", lc_ctype: "C", template: "template0" }
+
+postgresql_reload_direct: yes
+
+postgresql_extensions:
+  - { ext: "pg_stat_statements", db: "jiradb_rus"}
+
+sysctl_conf:
+  - { name: "vm.nr_hugepages", value: "1120" }
+  - { name: "vm.overcommit_memory", value: "2" }
+
+pg_stat_statements:
+  track: all
+
+disable_thp: true
+
+postgresql_conf:
+  checkpoint_completion_target: 0.9
+  huge_pages: on
+  shared_preload_libraries:
+    - pg_stat_statements
+
+
+postgresql_additional_packages:
+  - nfs-utils
+
+node_exporter: true
+postgresql_exporter: true
+logrotate: true
+firewall: true
+postgresql_wal_backup_enable: true
+wal_archive_command: pgbackrest --stanza=jira-db archive-push %p
+
+# logrotation
+logrotate_applications:
+  - name: postgresql
+    definitions:
+      - logs:
+          - "{{ postgresql_datadir }}/pg_log/*.log"
+        options:
+          - daily
+          - rotate 7
+          - copytruncate
+          - compress
+          - delaycompress
+          - notifempty
+          - missingok
+          - su root root
+...
+...

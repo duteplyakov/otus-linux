@@ -1,0 +1,16 @@
+[Unit]
+Description="JIRA Server"
+
+[Service]
+Type=forking
+User={{ jira_user }}
+Environment="JIRA_HOME={{ jira_home_directory }}"
+Environment="JRE_HOME={{ java_default_path }}"
+ExecStart={{ jira_app_directory }}/bin/start-jira.sh
+ExecStop={{ jira_app_directory }}/bin/stop-jira.sh
+TimeoutSec=180
+Restart=on-failure
+UMask=0022
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,53 @@
+---
+- name: get Java release name
+  uri:
+    url: "{{ openjdk_api_url }}"
+    return_contents: yes
+  register: openjdk_json
+  when:  not ansible_check_mode
+
+- name: update Java facts
+  set_fact:
+    java_release: "{{ openjdk_json.json[0].release_name }}"
+    java_binary_link: "{{ openjdk_json.json[0].binaries[0].binary_link }}"
+  when: java_release != "latest" and not ansible_check_mode
+
+- name: update Java facts for latest release
+  set_fact:
+    java_release: "{{ openjdk_json.json.release_name }}"
+    java_binary_link: "{{ openjdk_json.json.binaries[0].binary_link }}"
+  when: java_release == "latest" and not ansible_check_mode
+
+- name: create Java home directory
+  file:
+    path: "{{ java_home_directory }}/{{ java_release }}/{{ java_type }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "u=rwx,go=rx"
+
+- name: download and unarchive Java
+  unarchive:
+    src: "{{ java_binary_link }}"
+    dest: "{{ java_home_directory }}/{{ java_release }}/{{ java_type }}"
+    extra_opts: [--strip-components=1]
+    remote_src: true
+    keep_newer: yes
+  when: not ansible_check_mode
+
+- name: create symbolic link to default Java path
+  file:
+    src: "{{ java_home_directory }}/{{ java_release }}/{{ java_type }}"
+    dest: "{{ java_default_path }}"
+    state: link
+  when: not ansible_check_mode
+
+- name: add Java to global environment
+  lineinfile:
+    dest: "/etc/environment"
+    state: present
+    regexp: "^{{ item.env }}"
+    line: "{{ item.env }}={{ item.value }}"
+  loop:
+    - { env: JAVA_HOME, value: "{{ java_default_path }}" }
+    - { env: PATH, value: "{{ lookup('env','PATH') }}:{{ java_default_path }}/bin" }

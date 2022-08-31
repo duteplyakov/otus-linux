@@ -1,0 +1,88 @@
+---
+- name: create a JIRA user
+  user:
+    name: "{{ jira_user }}"
+    state: present
+
+- name: create JIRA app and home directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ jira_user }}"
+    group: "{{ jira_user }}"
+  loop:
+    - "{{ jira_app_directory }}"
+    - "{{ jira_home_directory }}"
+
+- name: get backup jira home by date
+  shell: "/usr/local/bin/borg list root@backup:/var/backups/jira/home | cut -f1 -d' ' | grep '{{ backup_date }}'"
+  register: borg_backup
+  environment:
+    BORG_UNKNOWN_UNENCRYPTED_REPO_ACCESS_IS_OK: 'yes'
+  ignore_errors: True
+
+- name: restore jira home
+  shell: "/usr/local/bin/borg extract root@backup:/var/backups/jira/home::{{ borg_backup.stdout }} var/atlassian"
+  args:
+    chdir: /
+  register: restore_result
+
+- name: download and unarchive JIRA
+  unarchive:
+    src: "https://product-downloads.atlassian.com/software/jira/downloads/atlassian-jira-software-{{ jira_version }}.tar.gz"
+    dest: "{{ jira_app_directory }}"
+    owner: "{{ jira_user }}"
+    group: "{{ jira_user }}"
+    extra_opts: [--strip-components=1]
+    remote_src: true
+  when: not ansible_check_mode
+
+- name: apply jira server.xml config
+  template:
+    src: server.xml.j2
+    dest: "{{ jira_app_directory }}/conf/server.xml"
+
+- name: Restore jira DB
+  shell: psql -U {{ DBUser }} -w -d {{ DBName }} -p 5432 -h {{ DBHost }} < /vagrant/backups/jira/jira.sql
+
+# - name: Temporary disable SeLinux
+#   shell: setenforce 0
+
+- name: setup running JIRA as service
+  template:
+    src: jira.service.j2
+    dest: /lib/systemd/system/jira.service
+  notify: reload systemd
+  notify: Start and enable jira
+
+- name: apply nginx conf for jira
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: Restart and enable nginx
+
+- block:
+  - name: find postgresql jdbc drivers
+    find:
+      path: "{{ jira_app_directory }}/lib/"
+      pattern: postgresql-*
+    register: postgresql_drivers
+
+  - name: delete postgresql jdbc drivers
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    loop: "{{ postgresql_drivers.files }}"
+
+  - name: download postgresql jdbc driver
+    get_url:
+      url: "https://jdbc.postgresql.org/download/postgresql-{{ jdbc_version }}.jar"
+      dest: "{{ jira_app_directory }}/lib/"
+      owner: "{{ jira_user }}"
+      group: "{{ jira_user }}"
+  when:
+    - jdbc_version is defined
+    - not ansible_check_mode
+  tags:
+    - jdbc_driver_configuration
+...
