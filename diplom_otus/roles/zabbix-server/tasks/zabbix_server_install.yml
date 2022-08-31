@@ -1,0 +1,19 @@
+- name: Enable Zabbix yum repository
+  template:
+    src: zabbix.repo.j2
+    dest: /etc/yum.repos.d/zabbix.repo
+
+- name: Install zabbix-server
+  yum:
+    name:
+      - zabbix-server-pgsql
+
+- name: Install zabbix-web-pgsql
+  yum:
+    name:
+      - zabbix-web-pgsql
+
+- name: Install php-fpm
+  yum:
+    name:
+      - php-fpm

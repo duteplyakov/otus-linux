@@ -1,0 +1,97 @@
+- name: Save pgpass for access remote db
+  template:
+    src: pgpass.j2
+    dest: /root/.pgpass
+    mode: 0600
+
+- name: Setup PostgreSQL Database
+  shell: |
+    psql -U postgres -w -p 5432 -h {{ DBHost }} -c "CREATE USER {{ DBUser }} WITH PASSWORD '{{ DBPassword }}';"
+    psql -U postgres -w -p 5432 -h {{ DBHost }} -c "CREATE DATABASE {{ DBName }} WITH OWNER {{ DBUser }};"
+    psql -U {{ DBUser }} -w -d {{ DBName }} -p 5432 -h {{ DBHost }} < /vagrant/backups/zabbix.sql
+    # zcat /usr/share/doc/zabbix-server-pgsql*/create.sql.gz | psql -U zabbix -w -p 5432 -h database zabbix
+
+- name: Apply nginx config for zabbix
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+
+- name: Apply php-ini config
+  template:
+    src: php.ini.j2
+    dest: /etc/php.ini
+
+- name: Apply php-fpm config
+  template:
+    src: php-fpm.conf.j2
+    dest: /etc/php-fpm.conf
+
+- name: Apply php-fpm www config
+  template:
+    src: php-fpm.www.conf.j2
+    dest: /etc/php-fpm.d/www.conf
+
+- name: Apply zabbix-server config
+  template:
+    src: zabbix_server.conf.j2
+    dest: /etc/zabbix/zabbix_server.conf
+
+- name: Apply zabbix-web php config
+  template:
+    src: zabbix.conf.php.j2
+    dest: /etc/zabbix/web/zabbix.conf.php
+
+- name: Copy zabbix cert
+  template:
+    src: zabbix.cert
+    dest: /etc/ssl/zabbix.cert
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: Copy zabbix key
+  template:
+    src: zabbix.key
+    dest: /etc/ssl/zabbix.key
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+# - name: Disable SeLinux
+#   shell: setenforce 0 && sleep 3
+
+- name: Copy selinux module te-file
+  copy:
+    src: zabbix-custom.te
+    dest: /tmp/zabbix-custom.te
+
+- name: Copy selinux module pp-file
+  copy:
+    src: zabbix-custom.pp
+    dest: /tmp/zabbix-custom.pp
+
+- name: Apply selinux custom module
+  shell: cd /tmp && semodule -i zabbix-custom.pp
+
+- name: Start and enable zabbix-server
+  systemd:
+    name: zabbix-server
+    state: started
+    enabled: yes
+
+- name: Start and enable php-fpm
+  systemd:
+    name: php-fpm
+    state: started
+    enabled: yes
+
+- name: Restart and enable nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+- name: Apply filebeat nginx module
+  template:
+    src: filebeat-nginx.yml
+    dest: /etc/filebeat/modules.d/nginx.yml

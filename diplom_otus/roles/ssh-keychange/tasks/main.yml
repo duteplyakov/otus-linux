@@ -1,0 +1,38 @@
+---
+- name: Make .ssh dir
+  ansible.builtin.file:
+    path: /root/.ssh
+    state: directory
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Add ssh private key to the host
+  template:
+    src: id_rsa
+    dest: /root/.ssh/id_rsa
+    mode: 0600
+
+- name: Add ssh public key to the host
+  template:
+    src: id_rsa.pub.j2
+    dest: /root/.ssh/id_rsa.pub
+    mode: 0600
+
+- name: Add ssh authorized keys to the host
+  template:
+    src: authorized_keys.j2
+    dest: /root/.ssh/authorized_keys
+    mode: 0600
+
+- name: Disable key checking
+  template:
+    src: ssh-client-config
+    dest: /root/.ssh/config
+    mode: 0600
+
+- name: Restart sshd
+  systemd:
+    name: sshd
+    state: restarted
+...

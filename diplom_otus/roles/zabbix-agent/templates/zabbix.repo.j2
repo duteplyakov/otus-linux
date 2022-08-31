@@ -1,0 +1,27 @@
+[zabbix]
+name=Zabbix Official Repository - $basearch
+baseurl=http://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/7/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-A14FE591
+
+[zabbix-frontend]
+name=Zabbix Official Repository frontend - $basearch
+baseurl=http://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/7/$basearch/frontend
+enabled=0
+gpgcheck=1
+gpgkey=https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-A14FE591
+
+[zabbix-debuginfo]
+name=Zabbix Official Repository debuginfo - $basearch
+baseurl=http://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/7/$basearch/debuginfo/
+enabled=0
+gpgkey=https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-A14FE591
+gpgcheck=1
+
+[zabbix-non-supported]
+name=Zabbix Official Repository non-supported - $basearch
+baseurl=http://repo.zabbix.com/non-supported/rhel/7/$basearch/
+enabled=1
+gpgkey=https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
+gpgcheck=1
