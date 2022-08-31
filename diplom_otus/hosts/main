@@ -1,0 +1,6 @@
+[web]
+webserver ansible_host=127.0.0.1 ansible_port=50020 ansible_private_key_file=.vagrant/machines/webserver/virtualbox/private_key
+database ansible_host=127.0.0.1 ansible_port=50021 ansible_private_key_file=.vagrant/machines/database/virtualbox/private_key
+zabbix ansible_host=127.0.0.1 ansible_port=50022 ansible_private_key_file=.vagrant/machines/zabbix/virtualbox/private_key
+backup ansible_host=127.0.0.1 ansible_port=50023 ansible_private_key_file=.vagrant/machines/backup/virtualbox/private_key
+elk ansible_host=127.0.0.1 ansible_port=50024 ansible_private_key_file=.vagrant/machines/elk/virtualbox/private_key
